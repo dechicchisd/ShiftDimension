@@ -16,6 +16,7 @@ public class comando_mov : MonoBehaviour
     public float t;
     public static float altezzaCorrente;
     public BoxCollider2D playerCollider;
+    private float walkingSpeed = 0.07f;
 
 
     // Start is called before the first frame update
@@ -102,12 +103,14 @@ public class comando_mov : MonoBehaviour
         {
             animazione.Play("walk");
         }
+        //se il player è rivolto a sinistra
         if (isRiight == false)
         {
-            player.transform.Rotate(0, 180f, 0);
+            //si gira a destra
+            transform.Rotate(0, 180f, 0);
             isRiight = true;
         }
-        player.transform.Translate(0.03f, 0, 0);
+        player.transform.Translate(walkingSpeed, 0, 0);
     }
 
     private void walkLeft()
@@ -116,11 +119,13 @@ public class comando_mov : MonoBehaviour
         {
             animazione.Play("walk");
         }
+        //se il player è rivolto a destra
         if (isRiight == true)
         {
-            player.transform.Rotate(0, 180f, 0);
+            //si gira a sinistra
+            transform.Rotate(0, 180f, 0);
             isRiight = false;
         }
-        player.transform.Translate(0.03f, 0, 0);
+        player.transform.Translate(walkingSpeed, 0, 0);
     }
 }
