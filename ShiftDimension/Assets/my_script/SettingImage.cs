@@ -9,7 +9,7 @@ public class SettingImage : MonoBehaviour
     public Image imgToChange;
 
     public void ChangeImg() 
-    {
+    {   
         imgToChange.GetComponent<Image>().sprite = spriteToUse;
     }
 
