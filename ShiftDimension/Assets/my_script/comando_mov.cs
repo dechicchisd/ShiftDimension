@@ -18,6 +18,10 @@ public class comando_mov : MonoBehaviour
     public static float altezzaCorrente;    //VARIABILE CHE MI RITORNA L'ALTEZZA CORRENTE DEL PLAYER (SI AGGIORNA OGNI FRAME)
     public BoxCollider2D playerCollider;    //BOXCOLLIDER2D DEL PLAYER
 
+    public ForceMode2D salto;
+    public float t;
+    private float walkingSpeed = 0.01f;
+
 
     // Start is called before the first frame update
     void Start()    //INIZIALIZZO L'ANIMATORE DEL PLAYER E ACQUISISCO LA PRIMA ALTEZZA DEL PLAYER
@@ -99,12 +103,18 @@ public class comando_mov : MonoBehaviour
         {
             animazione.Play("walk");
         }
+
         if (isRiight == false) //SE NON STA ANDANDO VERSO DESTRA, RUOTA IL PLAYER
+
+        //se il player è rivolto a sinistra
+        if (isRiight == false)
+
         {
-            player.transform.Rotate(0, 180f, 0);
+            //si gira a destra
+            transform.Rotate(0, 180f, 0);
             isRiight = true;
         }
-        player.transform.Translate(0.03f, 0, 0);
+        player.transform.Translate(walkingSpeed, 0, 0);
     }
 
     private void walkLeft() //CORRISPETTIVO DI WALKRIGHT MA VERSO SINISTRA
@@ -113,11 +123,13 @@ public class comando_mov : MonoBehaviour
         {
             animazione.Play("walk");
         }
+        //se il player è rivolto a destra
         if (isRiight == true)
         {
-            player.transform.Rotate(0, 180f, 0);
+            //si gira a sinistra
+            transform.Rotate(0, 180f, 0);
             isRiight = false;
         }
-        player.transform.Translate(0.03f, 0, 0);
+        player.transform.Translate(walkingSpeed, 0, 0);
     }
 }
