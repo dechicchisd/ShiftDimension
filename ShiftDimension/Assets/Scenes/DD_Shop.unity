@@ -2294,6 +2294,7 @@ GameObject:
   - component: {fileID: 901013418}
   - component: {fileID: 901013417}
   - component: {fileID: 901013416}
+  - component: {fileID: 901013419}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2366,6 +2367,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &901013419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901013415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b20078b5e0c4e4eba2abd8036aac46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTextCoins: {fileID: 723734239}
+  priceText: {fileID: 706189327}
 --- !u!1 &1013669138
 GameObject:
   m_ObjectHideFlags: 0
@@ -2595,7 +2610,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1856716773}
   m_HandleRect: {fileID: 1856716772}
   m_Direction: 0
-  m_Value: 0.00000015730713
+  m_Value: 0
   m_Size: 0.6734007
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2876,7 +2891,6 @@ GameObject:
   - component: {fileID: 1518959899}
   - component: {fileID: 1518959898}
   - component: {fileID: 1518959897}
-  - component: {fileID: 1518959900}
   m_Layer: 5
   m_Name: ConfButton
   m_TagString: Untagged
@@ -2959,8 +2973,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1518959900}
-        m_MethodName: SettingMoney
+      - m_Target: {fileID: 901013419}
+        m_MethodName: DecreaseCoins
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3018,21 +3032,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518959895}
   m_CullTransparentMesh: 0
---- !u!114 &1518959900
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1518959895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b20078b5e0c4e4eba2abd8036aac46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingMoney: {fileID: 723734239}
-  priceText: {fileID: 706189327}
-  bottone: {fileID: 1518959897}
 --- !u!1 &1683076813
 GameObject:
   m_ObjectHideFlags: 0

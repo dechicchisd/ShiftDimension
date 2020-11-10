@@ -7,22 +7,39 @@ using UnityEngine.SceneManagement;
 
 public class UpdateMoney : MonoBehaviour
 {
-    public TextMeshProUGUI startingMoney;
+    public TextMeshProUGUI myTextCoins;
     public TextMeshProUGUI priceText;
-    private int endMoney;
-    private int currentMoney;
-    private bool isDecreasing = false;
-    public Button bottone;
-    private IEnumerator ien;
+    private float desiredCoins;
+    private float currentCoins;
+    private float initialCoins;
+    private float animationTime = 1.5f;
+
+
     // Start is called before the first frame update
 
-   
-
-    public void SettingMoney()
+    public void Start()
     {
-        int startMoney = System.Int16.Parse(startingMoney.text);
-        int currentMoney = startMoney - System.Int16.Parse(priceText.text);
-        startingMoney.text = currentMoney.ToString();
+        initialCoins = System.Single.Parse(myTextCoins.text);
+        desiredCoins = initialCoins;
+        currentCoins = initialCoins;
     }
+
+    public void DecreaseCoins()
+    {
+        desiredCoins = currentCoins - System.Single.Parse(priceText.text);
+    }
+
+    public void Update()
+    {
+
+        if ((desiredCoins < currentCoins) && (desiredCoins >= 0))
+        {
+            currentCoins -= (animationTime * Time.deltaTime) * (initialCoins - desiredCoins);
+            if (currentCoins <= desiredCoins)
+                currentCoins = desiredCoins;
+        }
+        myTextCoins.text = currentCoins.ToString("0");
+    }
+
 
 }
