@@ -20,14 +20,16 @@ public class comando_mov : MonoBehaviour
 
     public ForceMode2D salto;
     public float t;
-    private float walkingSpeed = 0.01f;
+    private float walkingSpeed = 15.0f;
+
 
 
     // Start is called before the first frame update
     void Start()    //INIZIALIZZO L'ANIMATORE DEL PLAYER E ACQUISISCO LA PRIMA ALTEZZA DEL PLAYER
     {
         animazione = GetComponent<Animator>();  
-        altezzaCorrente = player.position.y;    
+        altezzaCorrente = player.position.y;
+
     }
 
     // Update is called once per frame
@@ -114,7 +116,7 @@ public class comando_mov : MonoBehaviour
             transform.Rotate(0, 180f, 0);
             isRiight = true;
         }
-        player.transform.Translate(walkingSpeed, 0, 0);
+        player.transform.Translate(walkingSpeed * Time.deltaTime, 0, 0, Space.World);
     }
 
     private void walkLeft() //CORRISPETTIVO DI WALKRIGHT MA VERSO SINISTRA
@@ -130,6 +132,6 @@ public class comando_mov : MonoBehaviour
             transform.Rotate(0, 180f, 0);
             isRiight = false;
         }
-        player.transform.Translate(walkingSpeed, 0, 0);
+        player.transform.Translate(-walkingSpeed * Time.deltaTime, 0, 0, Space.World);
     }
 }
