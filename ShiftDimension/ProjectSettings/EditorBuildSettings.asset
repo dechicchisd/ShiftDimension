@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DD_Shop.unity
     guid: fb8b2b67b4b1fa64eb3fbf9a4d618170
+  - enabled: 1
+    path: Assets/Scenes/MG_lvl1.unity
+    guid: 41b31ae910f96714a9fa6336d024546b
+  - enabled: 1
+    path: Assets/Scenes/MG_lvl1Void.unity
+    guid: f5ae90d7ce87f5a4bb78f4ede5303789
   m_configObjects: {}

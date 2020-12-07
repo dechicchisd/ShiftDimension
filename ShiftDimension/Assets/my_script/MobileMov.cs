@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MobileMov : MonoBehaviour
 {
@@ -17,17 +18,35 @@ public class MobileMov : MonoBehaviour
     public ForceMode2D salto;
     public float t;
     public static float altezzaCorrente;
+    public static float altezzaInizio;    //VARIABILE CHE MI RITORNA L'ALTEZZA CORRENTE DEL PLAYER (SI AGGIORNA OGNI FRAME)
+    public static float distanzaCorrente;    //VARIABILE CHE MI RITORNA LA DISTANZA PERCORSA CORRENTE DEL PLAYER (SI AGGIORNA OGNI FRAME)
+    public static float distanzaInizio;    //VARIABILE CHE MI RITORNA LA DISTANZA INIZIALEDEL LIVELLO (SI AGGIORNA OGNI FRAME)
     public BoxCollider2D playerCollider;
-    private float walkingSpeed = 0.07f;
+    private float walkingSpeed = 15.0f;
+    public Rigidbody2D inizioLivello;
     public Joystick joystick;
     public Button jumpButton;
+    public Button shiftButton;
     private Button btn;
+    private Vector2 nuovaPosizione;
+    private ClasseStatica parametriDiAppoggio;
+
 
     // Start is called before the first frame update
     void Start()
-    {
-        animazione = GetComponent<Animator>();
+    { 
+        parametriDiAppoggio = gameObject.AddComponent<ClasseStatica>();
+        parametriDiAppoggio.setAltezzaCorrente(altezzaCorrente);
+        parametriDiAppoggio.setDistanzaCorrente(distanzaCorrente);
+        parametriDiAppoggio.setDistanzaIniziale(distanzaInizio);
+        parametriDiAppoggio.setAltezzaIniziale(altezzaInizio);
+        nuovaPosizione = new Vector2(parametriDiAppoggio.getDeltaX() + inizioLivello.position.x, parametriDiAppoggio.getAltezzaCorrente() + 15f);
+        player.MovePosition(nuovaPosizione);
         altezzaCorrente = player.position.y;
+        distanzaInizio = inizioLivello.position.x;
+        distanzaCorrente = player.position.x;
+        animazione = GetComponent<Animator>();
+        animazione.Play("rest");
     }
 
     // Update is called once per frame
@@ -35,10 +54,10 @@ public class MobileMov : MonoBehaviour
     {
         if (player.position.y < altezzaCorrente)
         {
-            animazione.Play("rest");
+            animazione.Play("land");
             isActor1OnTheGround = false;
         }
-    
+
         if (joystick.Horizontal >= .2f)
         {
             walkRight();
@@ -47,27 +66,30 @@ public class MobileMov : MonoBehaviour
         {
             walkLeft();
         }
-        else if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")))
+        else if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && !(animazione.GetCurrentAnimatorStateInfo(0).IsName("land"))) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
         {
             animazione.Play("rest");
         }
-        altezzaCorrente = player.position.y;
+        altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
+        distanzaCorrente = player.position.x;
+        parametriDiAppoggio.setAltezzaCorrente(altezzaCorrente);
+        parametriDiAppoggio.setDistanzaCorrente(distanzaCorrente);
 
-      
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)  //CHIAMATA QUANDO C'è UNA COLLISIONE TRA DUE COLLIDER
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")  //SE C'è UNA COLLISIONE CON UN OGGETTO CHE HA IL TAG GROUND, SEGNALA CHE IL PLAYER STA SUL TERRENO, E FAI PARTIRE L'ANIMAZIONE REST
         {
             isActor1OnTheGround = true;
             animazione.Play("rest");
         }
-        else if (collision.gameObject.tag == "Underground")
+        else if (collision.gameObject.tag == "Underground") //SE C'è UNA COLLISIONE CON UN OGGETTO CHE HA IL TAG UNDERGROUND, SEGNALA CHE IL PLAYER STA SUL TERRENO, FAI PARTIRE L'ANIMAZIONE LAND E RIMANDA IL LAYER VERSO IL BASSO
         {
             isActor1OnTheGround = true;
-            animazione.Play("rest");
-            player.AddForce(new Vector2(0, 1f), ForceMode2D.Impulse);
+            animazione.Play("land");
+            player.AddForce(new Vector2(0, -1f), ForceMode2D.Impulse);
         }
     }
 
@@ -77,47 +99,44 @@ public class MobileMov : MonoBehaviour
         {
             isActor1OnTheGround = true;
         }
-        else
-        {
-            isActor1OnTheGround = false;
-        }
     }
 
-    public void jumpAction()
+    private void jumpAction() //FUNZIONE DI SALTO
     {
         isActor1OnTheGround = false;
-        if (player.velocity.y == 0)
+        player.AddForce(m_NewForce, ForceMode2D.Impulse);
+        if (player.position.y < altezzaCorrente) //SE IL PLAYER STA SCENDENDO, MANDA L'ANIMAZIONE LAND, ALTRIMENTI MANDA L'ANIMAZIONE JUMP
         {
-            player.velocity = Vector2.up * m_NewForce;
-            if (player.position.y < altezzaCorrente)
-            {
-                animazione.Play("rest");
-            }
-            else
-            {
-                animazione.Play("jump");
-            }
+            animazione.Play("land");
+        }
+        else
+        {
+            animazione.Play("jump");
         }
 
     }
 
-    private void walkRight()
+    private void walkRight() //FUNZIONE DI CAMMINATA VERSO DESTRA
     {
-        if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && isActor1OnTheGround == true)
+        if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && isActor1OnTheGround == true) //SE NON STA SALTANDO E SI TROVA SUL TERRENO, MANDA L'ANIMAZIONE WALK
         {
             animazione.Play("walk");
         }
-        //se il player è rivolto a sinistra
-        if (isRiight == false)
-        {
-            //si gira a destra
-            transform.Rotate(0, 180f, 0);
-            isRiight = true;
-        }
-        player.transform.Translate(walkingSpeed, 0, 0);
+
+        if (isRiight == false) //SE NON STA ANDANDO VERSO DESTRA, RUOTA IL PLAYER
+
+            //se il player è rivolto a sinistra
+            if (isRiight == false)
+
+            {
+                //si gira a destra
+                transform.Rotate(0, 180f, 0);
+                isRiight = true;
+            }
+        player.transform.Translate(walkingSpeed * Time.deltaTime, 0, 0, Space.World);
     }
 
-    private void walkLeft()
+    private void walkLeft() //CORRISPETTIVO DI WALKRIGHT MA VERSO SINISTRA
     {
         if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && isActor1OnTheGround == true)
         {
@@ -130,6 +149,21 @@ public class MobileMov : MonoBehaviour
             transform.Rotate(0, 180f, 0);
             isRiight = false;
         }
-        player.transform.Translate(walkingSpeed, 0, 0);
+        player.transform.Translate(-walkingSpeed * Time.deltaTime, 0, 0, Space.World);
+    }
+
+    public void shiftDimensional()
+    {
+
+        if (SceneManager.GetActiveScene().name == "MG_lvl1")
+        {
+            SceneManager.LoadScene("MG_lvl1Void");
+        }
+        else if (SceneManager.GetActiveScene().name == "MG_lvl1Void")
+        {
+            SceneManager.LoadScene("MG_lvl1");
+        }
+
+
     }
 }
