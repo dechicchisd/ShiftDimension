@@ -103,16 +103,20 @@ public class MobileMov : MonoBehaviour
 
     private void jumpAction() //FUNZIONE DI SALTO
     {
-        isActor1OnTheGround = false;
-        player.AddForce(m_NewForce, ForceMode2D.Impulse);
-        if (player.position.y < altezzaCorrente) //SE IL PLAYER STA SCENDENDO, MANDA L'ANIMAZIONE LAND, ALTRIMENTI MANDA L'ANIMAZIONE JUMP
+        if(player.velocity.y == 0)
         {
-            animazione.Play("land");
+            isActor1OnTheGround = false;
+            player.AddForce(m_NewForce, ForceMode2D.Impulse);
+            if (player.position.y < altezzaCorrente) //SE IL PLAYER STA SCENDENDO, MANDA L'ANIMAZIONE LAND, ALTRIMENTI MANDA L'ANIMAZIONE JUMP
+            {
+                animazione.Play("land");
+            }
+            else
+            {
+                animazione.Play("jump");
+            }
         }
-        else
-        {
-            animazione.Play("jump");
-        }
+        
 
     }
 
@@ -154,15 +158,19 @@ public class MobileMov : MonoBehaviour
 
     public void shiftDimensional()
     {
+        if (player.velocity.y == 0)
+        {
+            if (SceneManager.GetActiveScene().name == "MG_lvl1")
+            {
+                SceneManager.LoadScene("MG_lvl1Void");
+            }
+            else if (SceneManager.GetActiveScene().name == "MG_lvl1Void")
+            {
+                SceneManager.LoadScene("MG_lvl1");
+            }
+        }
 
-        if (SceneManager.GetActiveScene().name == "MG_lvl1")
-        {
-            SceneManager.LoadScene("MG_lvl1Void");
-        }
-        else if (SceneManager.GetActiveScene().name == "MG_lvl1Void")
-        {
-            SceneManager.LoadScene("MG_lvl1");
-        }
+        
 
 
     }
