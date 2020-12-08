@@ -60,11 +60,11 @@ public class MobileMov : MonoBehaviour
 
         if (joystick.Horizontal >= .2f)
         {
-            walkRight();
+            WalkRight();
         }
         else if (joystick.Horizontal <= -.2f)
         {
-            walkLeft();
+            WalkLeft();
         }
         else if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && !(animazione.GetCurrentAnimatorStateInfo(0).IsName("land"))) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
         {
@@ -101,8 +101,8 @@ public class MobileMov : MonoBehaviour
         }
     }
 
-    private void jumpAction() //FUNZIONE DI SALTO
-    {
+    public void JumpAction() //FUNZIONE DI SALTO
+    { 
         if(player.velocity.y == 0)
         {
             isActor1OnTheGround = false;
@@ -120,7 +120,7 @@ public class MobileMov : MonoBehaviour
 
     }
 
-    private void walkRight() //FUNZIONE DI CAMMINATA VERSO DESTRA
+    private void WalkRight() //FUNZIONE DI CAMMINATA VERSO DESTRA
     {
         if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && isActor1OnTheGround == true) //SE NON STA SALTANDO E SI TROVA SUL TERRENO, MANDA L'ANIMAZIONE WALK
         {
@@ -140,7 +140,7 @@ public class MobileMov : MonoBehaviour
         player.transform.Translate(walkingSpeed * Time.deltaTime, 0, 0, Space.World);
     }
 
-    private void walkLeft() //CORRISPETTIVO DI WALKRIGHT MA VERSO SINISTRA
+    private void WalkLeft() //CORRISPETTIVO DI WALKRIGHT MA VERSO SINISTRA
     {
         if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && isActor1OnTheGround == true)
         {
@@ -156,7 +156,7 @@ public class MobileMov : MonoBehaviour
         player.transform.Translate(-walkingSpeed * Time.deltaTime, 0, 0, Space.World);
     }
 
-    public void shiftDimensional()
+    public void ShiftDimension()
     {
         if (player.velocity.y == 0)
         {
