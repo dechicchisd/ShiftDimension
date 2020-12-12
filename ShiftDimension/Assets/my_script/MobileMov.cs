@@ -29,24 +29,16 @@ public class MobileMov : MonoBehaviour
     public Button shiftButton;
     private Button btn;
     private Vector2 nuovaPosizione;
-    private ClasseStatica parametriDiAppoggio;
 
 
     // Start is called before the first frame update
     void Start()
-    { 
-        parametriDiAppoggio = gameObject.AddComponent<ClasseStatica>();
-        parametriDiAppoggio.setAltezzaCorrente(altezzaCorrente);
-        parametriDiAppoggio.setDistanzaCorrente(distanzaCorrente);
-        parametriDiAppoggio.setDistanzaIniziale(distanzaInizio);
-        parametriDiAppoggio.setAltezzaIniziale(altezzaInizio);
-        nuovaPosizione = new Vector2(parametriDiAppoggio.getDeltaX() + inizioLivello.position.x, parametriDiAppoggio.getAltezzaCorrente() + 15f);
+    {
+        nuovaPosizione = new Vector2(distanzaCorrente, altezzaCorrente + 1.1f);
         player.MovePosition(nuovaPosizione);
-        altezzaCorrente = player.position.y;
-        distanzaInizio = inizioLivello.position.x;
-        distanzaCorrente = player.position.x;
         animazione = GetComponent<Animator>();
         animazione.Play("rest");
+        Debug.Log("y: " + altezzaCorrente + " ||||||||| x: " + distanzaCorrente);
     }
 
     // Update is called once per frame
@@ -72,8 +64,6 @@ public class MobileMov : MonoBehaviour
         }
         altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
         distanzaCorrente = player.position.x;
-        parametriDiAppoggio.setAltezzaCorrente(altezzaCorrente);
-        parametriDiAppoggio.setDistanzaCorrente(distanzaCorrente);
 
 
     }
