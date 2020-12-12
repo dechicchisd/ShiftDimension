@@ -34,6 +34,7 @@ public class MobileMov : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         nuovaPosizione = new Vector2(distanzaCorrente, altezzaCorrente + 1.1f);
         player.MovePosition(nuovaPosizione);
         animazione = GetComponent<Animator>();
@@ -150,18 +151,34 @@ public class MobileMov : MonoBehaviour
     {
         if (player.velocity.y == 0)
         {
-            if (SceneManager.GetActiveScene().name == "MG_lvl1")
-            {
-                SceneManager.LoadScene("MG_lvl1Void");
-            }
-            else if (SceneManager.GetActiveScene().name == "MG_lvl1Void")
-            {
-                SceneManager.LoadScene("MG_lvl1");
-            }
+            animazione.Play("land");
+            StartCoroutine(IntervalloRicaricaScena());
         }
 
         
 
 
     }
+
+    IEnumerator IntervalloRicaricaScena()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1.2f);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        if (SceneManager.GetActiveScene().name == "MG_lvl1")
+        {
+
+            SceneManager.LoadScene("MG_lvl1Void");
+        }
+        else if (SceneManager.GetActiveScene().name == "MG_lvl1Void")
+        {
+            SceneManager.LoadScene("MG_lvl1");
+        }
+    }
+
 }
