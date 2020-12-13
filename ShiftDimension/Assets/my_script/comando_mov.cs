@@ -16,11 +16,12 @@ public class comando_mov : MonoBehaviour
     public bool isActor1OnTheGround = true; //VARIABILE CHE MI DICE SE IL PLAYER SI TROVA SUL TERRENO O IN ARIA
     public bool isRiight = true;    //VARIABILE CHE MI DICE SE IL PLAYER SI STA MUOVENDO VERSO DESTRA O SINISTRA
     public static float altezzaCorrente;    //VARIABILE CHE MI RITORNA L'ALTEZZA CORRENTE DEL PLAYER (SI AGGIORNA OGNI FRAME)
+    private float altezzaIniziale;
     public BoxCollider2D playerCollider;    //BOXCOLLIDER2D DEL PLAYER
-
     public ForceMode2D salto;
     public float t;
     private float walkingSpeed = 15.0f;
+    public float collidingForce;
 
 
 
@@ -28,7 +29,8 @@ public class comando_mov : MonoBehaviour
     void Start()    //INIZIALIZZO L'ANIMATORE DEL PLAYER E ACQUISISCO LA PRIMA ALTEZZA DEL PLAYER
     {
         animazione = GetComponent<Animator>();  
-        altezzaCorrente = player.position.y;
+        altezzaIniziale = player.position.y;
+        altezzaCorrente = altezzaIniziale;
 
     }
 
@@ -60,9 +62,13 @@ public class comando_mov : MonoBehaviour
         altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
 
     }
+    private void Hurt()
+    {
 
+    }
     private void OnCollisionEnter2D(Collision2D collision)  //CHIAMATA QUANDO C'è UNA COLLISIONE TRA DUE COLLIDER
     {
+        Enemy collEnemy = collision.collider.GetComponent<Enemy>();
         if (collision.gameObject.tag == "Ground")  //SE C'è UNA COLLISIONE CON UN OGGETTO CHE HA IL TAG GROUND, SEGNALA CHE IL PLAYER STA SUL TERRENO, E FAI PARTIRE L'ANIMAZIONE REST
         {
             isActor1OnTheGround = true;
@@ -73,6 +79,29 @@ public class comando_mov : MonoBehaviour
             isActor1OnTheGround = true;
             animazione.Play("land");
             player.AddForce(new Vector2(0, -1f), ForceMode2D.Impulse);
+        }
+        else if(collision.gameObject.tag == "Enemy")
+        {
+            if (collision.contacts[0].point.y == collision.contacts[1].point.y) //SE DUE PUNTI DI COLLISIONE CONSECUTIVI HANNO LA STESSA Y ALLORA LA COLLISIONE
+                                                                                //è SULLA FACCIA SUPERIORE DEL NEMICO
+            {
+                player.AddForce(new Vector2(0, collidingForce), ForceMode2D.Impulse);
+                Destroy(collision.gameObject);
+            }
+
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Coin")
+        {
+            Destroy(collision.gameObject);
         }
     }
 
