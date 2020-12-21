@@ -151,7 +151,7 @@ public class MobileMov : MonoBehaviour
     {
         if (player.velocity.y == 0)
         {
-            animazione.Play("land");
+            animazione.Play("shift");
             StartCoroutine(IntervalloRicaricaScena());
         }
 

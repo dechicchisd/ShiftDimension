@@ -25,3 +25,48 @@ REGOLE CREAZIONE ROBA
 2. File -> LG_"nome"
 3. 2° dimensione -> void
 4. 1° dimensione -> world/mondo
+
+
+
+
+LEVEL DESIGN
+1. Piantina super mario: salti sotto un blocco e lo attivi. Se ci passi sopra ti fa saltare molto in alto
+2. Fisica salite e discese
+3. Meccanica salto su un nemico ti fa fare un saltino
+4. Meccanica goomba scheletrici: saltare su determinati nemici non li uccide, ma li shifta nell'altra dimensione
+5. Meccanica sangue acido dei nemici
+6. Nemici ranged stile lanciatori di partello di supermario
+7. Zona di morte (delimitata da due rigidbody null)
+8. Movimento alieno delimitato da due rigidbody null
+
+
+DELFINO:
+1. Zona di morte (delimitata da due rigidbody null)
+2. Movimento alieno delimitato da due rigidbody null
+3. Fisica salite e discese
+
+
+MATTEO
+1. Grafica blocco piantina (punto 1)
+2. Due tipologie di nemici
+3. Aniamzioni nemici
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
