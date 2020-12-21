@@ -39,7 +39,6 @@ public class MobileMov : MonoBehaviour
         player.MovePosition(nuovaPosizione);
         animazione = GetComponent<Animator>();
         animazione.Play("rest");
-        Debug.Log("y: " + altezzaCorrente + " ||||||||| x: " + distanzaCorrente);
     }
 
     // Update is called once per frame
@@ -67,6 +66,15 @@ public class MobileMov : MonoBehaviour
         distanzaCorrente = player.position.x;
 
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D coll) 
+    {
+        if(coll.tag == "Coin")
+        {
+            Debug.Log("VGRFCEDXWS");
+            Destroy(coll.gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)  //CHIAMATA QUANDO C'è UNA COLLISIONE TRA DUE COLLIDER
