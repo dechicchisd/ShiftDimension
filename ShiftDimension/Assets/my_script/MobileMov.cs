@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MobileMov : MonoBehaviour
 {
@@ -25,16 +26,15 @@ public class MobileMov : MonoBehaviour
     private float walkingSpeed = 15.0f;
     public Rigidbody2D inizioLivello;
     public Joystick joystick;
-    public Button jumpButton;
-    public Button shiftButton;
     private Button btn;
     private Vector2 nuovaPosizione;
+    public float collidingForce;
+    public TextMeshProUGUI textCoin;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
         nuovaPosizione = new Vector2(distanzaCorrente, altezzaCorrente + 1.1f);
         player.MovePosition(nuovaPosizione);
         animazione = GetComponent<Animator>();
@@ -70,10 +70,11 @@ public class MobileMov : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll) 
     {
+        float numCoin = System.Single.Parse(textCoin.text) + 1;
         if(coll.tag == "Coin")
         {
-            Debug.Log("VGRFCEDXWS");
             Destroy(coll.gameObject);
+            textCoin.text = numCoin.ToString("0");
         }
     }
 
@@ -89,6 +90,21 @@ public class MobileMov : MonoBehaviour
             isActor1OnTheGround = true;
             animazione.Play("land");
             player.AddForce(new Vector2(0, -1f), ForceMode2D.Impulse);
+        }
+
+        else if (collision.gameObject.tag == "Enemy")
+        {
+            if (collision.contacts[0].point.y == collision.contacts[1].point.y) //SE DUE PUNTI DI COLLISIONE CONSECUTIVI HANNO LA STESSA Y ALLORA LA COLLISIONE
+                                                                                //è SULLA FACCIA SUPERIORE DEL NEMICO
+            {
+                player.AddForce(new Vector2(0, collidingForce), ForceMode2D.Impulse);
+                Destroy(collision.gameObject);
+            }
+
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -162,10 +178,6 @@ public class MobileMov : MonoBehaviour
             animazione.Play("shift");
             StartCoroutine(IntervalloRicaricaScena());
         }
-
-        
-
-
     }
 
     IEnumerator IntervalloRicaricaScena()
