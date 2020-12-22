@@ -17,7 +17,6 @@ public class MobileMov : MonoBehaviour
     public bool isActor1OnTheGround = true;
     public bool isRiight = true;
     public ForceMode2D salto;
-    public float t;
     public static float altezzaCorrente;
     public static float altezzaInizio;    //VARIABILE CHE MI RITORNA L'ALTEZZA CORRENTE DEL PLAYER (SI AGGIORNA OGNI FRAME)
     public static float distanzaCorrente;    //VARIABILE CHE MI RITORNA LA DISTANZA PERCORSA CORRENTE DEL PLAYER (SI AGGIORNA OGNI FRAME)
