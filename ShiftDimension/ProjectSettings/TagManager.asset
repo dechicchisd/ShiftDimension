@@ -8,6 +8,7 @@ TagManager:
   - Underground
   - Enemy
   - Coin
+  - Salita
   layers:
   - Default
   - TransparentFX

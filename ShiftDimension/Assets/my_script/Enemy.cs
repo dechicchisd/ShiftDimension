@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
 
     public Rigidbody2D alien;
     private float posIniziale;
-    public float offset;
+    public Rigidbody2D leftBound;
+    public Rigidbody2D rightBound; 
     public float walkingSpeed;
     private bool isRight = false;
     private EdgeCollider2D col;
@@ -15,7 +16,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        posIniziale = alien.position.x;
         col = alien.GetComponent<EdgeCollider2D>();
     }
 
@@ -32,11 +32,16 @@ public class Enemy : MonoBehaviour
             alien.transform.Translate(walkingSpeed * Time.deltaTime, 0, 0, Space.World);
         }
 
-        if (alien.position.x < posIniziale - offset)
+        if (alien.position.x < leftBound.position.x)
+        {
             isRight = true;
+        }
 
-        if (alien.position.x > posIniziale + offset)
+        if (alien.position.x > rightBound.position.x)
+        {
             isRight = false;
+        }
+
     }
 
     public void Hurt()

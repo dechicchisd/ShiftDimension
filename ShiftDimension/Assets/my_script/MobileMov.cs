@@ -34,7 +34,7 @@ public class MobileMov : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nuovaPosizione = new Vector2(distanzaCorrente, altezzaCorrente + 1.1f);
+        nuovaPosizione = new Vector2(inizioLivello.position.x + distanzaCorrente, altezzaCorrente + 1.1f);
         player.MovePosition(nuovaPosizione);
         animazione = GetComponent<Animator>();
         animazione.Play("rest");
@@ -105,6 +105,8 @@ public class MobileMov : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        
     }
 
     void OnCollisionStay2D(Collision2D collision)
