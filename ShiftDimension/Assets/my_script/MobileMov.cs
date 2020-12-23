@@ -11,6 +11,7 @@ using TMPro;
 
 public class MobileMov : MonoBehaviour
 {
+    [SerializeField] private LayerMask platformLayerMask;
     public Rigidbody2D player;
     public Vector2 m_NewForce = new Vector2(0, 30f);
     public Animator animazione;
@@ -20,8 +21,7 @@ public class MobileMov : MonoBehaviour
     public static float altezzaCorrente;
     public static float altezzaInizio;    //VARIABILE CHE MI RITORNA L'ALTEZZA CORRENTE DEL PLAYER (SI AGGIORNA OGNI FRAME)
     public static float distanzaCorrente;    //VARIABILE CHE MI RITORNA LA DISTANZA PERCORSA CORRENTE DEL PLAYER (SI AGGIORNA OGNI FRAME)
-    public static float distanzaInizio;    //VARIABILE CHE MI RITORNA LA DISTANZA INIZIALEDEL LIVELLO (SI AGGIORNA OGNI FRAME)
-    public BoxCollider2D playerCollider;
+    public static float distanzaInizio;    //VARIABILE CHE MI RITORNA LA DISTANZA INIZIALEDEL LIVELLO (SI AGGIORNA OGNI FRAME
     private float walkingSpeed = 15.0f;
     public Rigidbody2D inizioLivello;
     public Joystick joystick;
@@ -29,6 +29,7 @@ public class MobileMov : MonoBehaviour
     private Vector2 nuovaPosizione;
     public float collidingForce;
     public TextMeshProUGUI textCoin;
+    private BoxCollider2D boxCollider;
 
 
     // Start is called before the first frame update
@@ -38,15 +39,15 @@ public class MobileMov : MonoBehaviour
         player.MovePosition(nuovaPosizione);
         animazione = GetComponent<Animator>();
         animazione.Play("rest");
+        boxCollider = transform.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.position.y < altezzaCorrente)
+        if (!IsGrounded() && player.position.y < altezzaCorrente)
         {
             animazione.Play("land");
-            isActor1OnTheGround = false;
         }
 
         if (joystick.Horizontal >= .2f)
@@ -119,7 +120,7 @@ public class MobileMov : MonoBehaviour
 
     public void JumpAction() //FUNZIONE DI SALTO
     { 
-        if(player.velocity.y == 0)
+        if(IsGrounded())
         {
             isActor1OnTheGround = false;
             player.AddForce(m_NewForce, ForceMode2D.Impulse);
@@ -179,6 +180,26 @@ public class MobileMov : MonoBehaviour
             animazione.Play("shift");
             StartCoroutine(IntervalloRicaricaScena());
         }
+    }
+
+    private bool IsGrounded()
+    {
+        float extraHeight = .1f;
+        RaycastHit2D rayCastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
+        Color rayColor;
+        if(rayCastHit.collider != null)
+        {
+            rayColor = Color.green;
+        }
+        else
+        {
+            rayColor = Color.red;
+        }
+        
+        Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
+        Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
+        Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * boxCollider.bounds.extents.x, rayColor);
+        return rayCastHit.collider != null;
     }
 
     IEnumerator IntervalloRicaricaScena()
