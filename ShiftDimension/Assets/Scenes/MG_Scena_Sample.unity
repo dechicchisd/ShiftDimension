@@ -405,7 +405,6 @@ MonoBehaviour:
   player: {fileID: 128554294}
   m_NewForce: {x: 0, y: 30}
   animazione: {fileID: 128554292}
-  isActor1OnTheGround: 0
   isRiight: 1
   salto: 0
   inizioLivello: {fileID: 818894694}
@@ -1141,7 +1140,7 @@ GameObject:
   - component: {fileID: 275859586}
   m_Layer: 8
   m_Name: Salita
-  m_TagString: Salita
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

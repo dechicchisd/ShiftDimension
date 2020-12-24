@@ -15,7 +15,6 @@ public class MobileMov : MonoBehaviour
     public Rigidbody2D player;
     public Vector2 m_NewForce = new Vector2(0, 30f);
     public Animator animazione;
-    public bool isActor1OnTheGround = true;
     public bool isRiight = true;
     public ForceMode2D salto;
     public static float altezzaCorrente;
@@ -49,6 +48,10 @@ public class MobileMov : MonoBehaviour
         {
             animazione.Play("land");
         }
+        else if(!IsGrounded() && player.position.y > altezzaCorrente)
+        {
+            animazione.Play("jump");
+        }
 
         if (joystick.Horizontal >= .2f)
         {
@@ -58,7 +61,7 @@ public class MobileMov : MonoBehaviour
         {
             WalkLeft();
         }
-        else if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && !(animazione.GetCurrentAnimatorStateInfo(0).IsName("land"))) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
+        else if (IsGrounded()) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
         {
             animazione.Play("rest");
         }
@@ -80,19 +83,9 @@ public class MobileMov : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)  //CHIAMATA QUANDO C'è UNA COLLISIONE TRA DUE COLLIDER
     {
-        if (collision.gameObject.tag == "Ground")  //SE C'è UNA COLLISIONE CON UN OGGETTO CHE HA IL TAG GROUND, SEGNALA CHE IL PLAYER STA SUL TERRENO, E FAI PARTIRE L'ANIMAZIONE REST
-        {
-            isActor1OnTheGround = true;
-            animazione.Play("rest");
-        }
-        else if (collision.gameObject.tag == "Underground") //SE C'è UNA COLLISIONE CON UN OGGETTO CHE HA IL TAG UNDERGROUND, SEGNALA CHE IL PLAYER STA SUL TERRENO, FAI PARTIRE L'ANIMAZIONE LAND E RIMANDA IL LAYER VERSO IL BASSO
-        {
-            isActor1OnTheGround = true;
-            animazione.Play("land");
-            player.AddForce(new Vector2(0, -1f), ForceMode2D.Impulse);
-        }
+        
 
-        else if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             if (collision.contacts[0].point.y == collision.contacts[1].point.y) //SE DUE PUNTI DI COLLISIONE CONSECUTIVI HANNO LA STESSA Y ALLORA LA COLLISIONE
                                                                                 //è SULLA FACCIA SUPERIORE DEL NEMICO
@@ -110,28 +103,12 @@ public class MobileMov : MonoBehaviour
         
     }
 
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isActor1OnTheGround = true;
-        }
-    }
 
     public void JumpAction() //FUNZIONE DI SALTO
     { 
         if(IsGrounded())
         {
-            isActor1OnTheGround = false;
             player.AddForce(m_NewForce, ForceMode2D.Impulse);
-            if (player.position.y < altezzaCorrente) //SE IL PLAYER STA SCENDENDO, MANDA L'ANIMAZIONE LAND, ALTRIMENTI MANDA L'ANIMAZIONE JUMP
-            {
-                animazione.Play("land");
-            }
-            else
-            {
-                animazione.Play("jump");
-            }
         }
         
 
@@ -139,7 +116,7 @@ public class MobileMov : MonoBehaviour
 
     private void WalkRight() //FUNZIONE DI CAMMINATA VERSO DESTRA
     {
-        if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && isActor1OnTheGround == true) //SE NON STA SALTANDO E SI TROVA SUL TERRENO, MANDA L'ANIMAZIONE WALK
+        if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && IsGrounded()) //SE NON STA SALTANDO E SI TROVA SUL TERRENO, MANDA L'ANIMAZIONE WALK
         {
             animazione.Play("walk");
         }
@@ -159,7 +136,7 @@ public class MobileMov : MonoBehaviour
 
     private void WalkLeft() //CORRISPETTIVO DI WALKRIGHT MA VERSO SINISTRA
     {
-        if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && isActor1OnTheGround == true)
+        if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && IsGrounded())
         {
             animazione.Play("walk");
         }
@@ -182,10 +159,14 @@ public class MobileMov : MonoBehaviour
         }
     }
 
+    //controlla che il player tocchi terra 
     private bool IsGrounded()
     {
-        float extraHeight = .1f;
+        //allungo la hitbox verso il basso per non far buggare le animazioni in discesa
+        float extraHeight = .36f;
+        //crea una hitbox da cui posso controllare se il player sta toccando collider
         RaycastHit2D rayCastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
+
         Color rayColor;
         if(rayCastHit.collider != null)
         {
@@ -195,11 +176,17 @@ public class MobileMov : MonoBehaviour
         {
             rayColor = Color.red;
         }
-        
+       
+        //disegna l'hitbox con del player e diventa rossa quando non collide con nulla altrimenti verde
         Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
-        Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * boxCollider.bounds.extents.x, rayColor);
-        return rayCastHit.collider != null;
+        Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * boxCollider.bounds.extents.x * 2, rayColor);
+
+        bool ground = false;
+        if (rayCastHit.collider != null)
+            ground = rayCastHit.collider.tag == "Ground";
+
+        return ground;
     }
 
     IEnumerator IntervalloRicaricaScena()
