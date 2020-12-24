@@ -12,6 +12,7 @@ using TMPro;
 public class MobileMov : MonoBehaviour
 {
     [SerializeField] private LayerMask platformLayerMask;
+    private bool isDead = false;
     public Rigidbody2D player;
     public Vector2 m_NewForce = new Vector2(0, 30f);
     public Animator animazione;
@@ -29,6 +30,7 @@ public class MobileMov : MonoBehaviour
     public float collidingForce;
     public TextMeshProUGUI textCoin;
     private BoxCollider2D boxCollider;
+    public GameObject deathPanel;
 
 
     // Start is called before the first frame update
@@ -68,7 +70,6 @@ public class MobileMov : MonoBehaviour
         altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
         distanzaCorrente = player.position.x;
 
-
     }
 
     private void OnTriggerEnter2D(Collider2D coll) 
@@ -96,8 +97,19 @@ public class MobileMov : MonoBehaviour
 
             else
             {
+                distanzaCorrente = 0;
+                altezzaCorrente = 0;
+                deathPanel.SetActive(true);
                 Destroy(this.gameObject);
             }
+        }
+
+        if(collision.gameObject.tag == "Death")
+        {
+            distanzaCorrente = 0;
+            altezzaCorrente = 0;
+            deathPanel.SetActive(true);
+            Destroy(this.gameObject);
         }
 
         
@@ -185,9 +197,11 @@ public class MobileMov : MonoBehaviour
         bool ground = false;
         if (rayCastHit.collider != null)
             ground = rayCastHit.collider.tag == "Ground";
-
+        
         return ground;
     }
+
+    
 
     IEnumerator IntervalloRicaricaScena()
     {

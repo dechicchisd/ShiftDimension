@@ -8,7 +8,7 @@ TagManager:
   - Underground
   - Enemy
   - Coin
-  - Salita
+  - Death
   layers:
   - Default
   - TransparentFX
