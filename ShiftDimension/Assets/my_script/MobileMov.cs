@@ -50,6 +50,39 @@ public class MobileMov : MonoBehaviour
         {
             animazione.Play("land");
         }
+        else if (!IsGrounded() && player.position.y > altezzaCorrente)
+        {
+            animazione.Play("jump");
+        }
+        if (Input.GetKeyDown("space") && IsGrounded() && !(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump"))) //SE VIENE PREMUTO SPAZIO && IL PLAYER è SUL TERRENO && NON STA GIà SALTANDO, ALLORA SALTA
+        {
+            JumpAction();
+        }
+        else if (Input.GetKey("d")) //SE VIENE PREMUTO IL TASTO D CAMMINA VERSO DESTRA
+        {
+            WalkRight();
+        }
+        else if (Input.GetKey("a")) //SE VIENE PREMUTO IL TASTO A CAMMINA VERSO SINISTRA
+        {
+            WalkLeft();
+        }
+        else if (IsGrounded()) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
+        {
+            animazione.Play("rest");
+        }
+        altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
+        distanzaCorrente = player.position.x;
+
+    }
+
+    /* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------
+    // Update is called once per frame
+    void Update()
+    {
+        if (!IsGrounded() && player.position.y < altezzaCorrente)
+        {
+            animazione.Play("land");
+        }
         else if(!IsGrounded() && player.position.y > altezzaCorrente)
         {
             animazione.Play("jump");
@@ -71,6 +104,7 @@ public class MobileMov : MonoBehaviour
         distanzaCorrente = player.position.x;
 
     }
+    */
 
     private void OnTriggerEnter2D(Collider2D coll) 
     {
