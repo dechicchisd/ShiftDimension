@@ -13,6 +13,7 @@ public class MobileMov : MonoBehaviour
 {
     [SerializeField] private LayerMask platformLayerMask;
     private bool isDead = false;
+    public static bool isShifting;
     public Rigidbody2D player;
     public Vector2 m_NewForce = new Vector2(0, 30f);
     public Animator animazione;
@@ -31,80 +32,105 @@ public class MobileMov : MonoBehaviour
     public TextMeshProUGUI textCoin;
     private BoxCollider2D boxCollider;
     public GameObject deathPanel;
+    public BoxCollider2D playerCollider;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        nuovaPosizione = new Vector2(inizioLivello.position.x + distanzaCorrente, altezzaCorrente + 1.1f);
+        if(isShifting == false)
+        {
+            distanzaCorrente = inizioLivello.position.x;
+        }
+        else
+        {
+            StartCoroutine(IntervalloRicaricaScenaPost());
+        }
+        nuovaPosizione = new Vector2( distanzaCorrente, altezzaCorrente + 1.1f);
         player.MovePosition(nuovaPosizione);
         animazione = GetComponent<Animator>();
         animazione.Play("rest");
         boxCollider = transform.GetComponent<BoxCollider2D>();
+        isDead = false;
     }
 
+  //  /* ---------------------- USO DELLA TASTIERA --------------------------
     // Update is called once per frame
     void Update()
     {
-        if (!IsGrounded() && player.position.y < altezzaCorrente)
+        if (!IsGrounded() && player.position.y < altezzaCorrente && isDead == false && isShifting == false)
         {
             animazione.Play("land");
         }
-        else if (!IsGrounded() && player.position.y > altezzaCorrente)
+        else if (!IsGrounded() && player.position.y > altezzaCorrente && isDead == false && isShifting == false)
         {
             animazione.Play("jump");
         }
-        if (Input.GetKeyDown("space") && IsGrounded() && !(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump"))) //SE VIENE PREMUTO SPAZIO && IL PLAYER è SUL TERRENO && NON STA GIà SALTANDO, ALLORA SALTA
+        if (Input.GetKeyDown("space") && IsGrounded() && !(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && isShifting == false) //SE VIENE PREMUTO SPAZIO && IL PLAYER è SUL TERRENO && NON STA GIà SALTANDO, ALLORA SALTA
         {
             JumpAction();
         }
-        else if (Input.GetKey("d")) //SE VIENE PREMUTO IL TASTO D CAMMINA VERSO DESTRA
+        else if (Input.GetKey("d") && isDead == false && isShifting == false) //SE VIENE PREMUTO IL TASTO D CAMMINA VERSO DESTRA
         {
             WalkRight();
         }
-        else if (Input.GetKey("a")) //SE VIENE PREMUTO IL TASTO A CAMMINA VERSO SINISTRA
+        else if (Input.GetKey("a") && isDead == false && isShifting == false) //SE VIENE PREMUTO IL TASTO A CAMMINA VERSO SINISTRA
         {
             WalkLeft();
         }
-        else if (IsGrounded()) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
+        else if (IsGrounded() && isDead == false && isShifting == false) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
         {
             animazione.Play("rest");
         }
-        altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
-        distanzaCorrente = player.position.x;
+        else if(isDead == true)
+        {
+            animazione.Play("death");
+        }
+        if(isDead == false)
+        {
+            altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
+            distanzaCorrente = player.position.x;
+        }
 
     }
-
+  // a   */
     /* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------
     // Update is called once per frame
     void Update()
     {
-        if (!IsGrounded() && player.position.y < altezzaCorrente)
+        if (!IsGrounded() && player.position.y < altezzaCorrente && isDead == false && isShifting == false)
         {
             animazione.Play("land");
         }
-        else if(!IsGrounded() && player.position.y > altezzaCorrente)
+        else if(!IsGrounded() && player.position.y > altezzaCorrente && isDead == false && isShifting == false)
         {
             animazione.Play("jump");
         }
 
-        if (joystick.Horizontal >= .2f)
+        if (joystick.Horizontal >= .2f && isDead == false && isShifting == false)
         {
             WalkRight();
         }
-        else if (joystick.Horizontal <= -.2f)
+        else if (joystick.Horizontal <= -.2f && isDead == false && isShifting == false)
         {
             WalkLeft();
         }
-        else if (IsGrounded()) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
+        else if (IsGrounded() && isDead == false && isShifting == false) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
         {
             animazione.Play("rest");
         }
-        altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
-        distanzaCorrente = player.position.x;
+        else if (isDead == true)
+        {
+            animazione.Play("death");
+        }
+        if (isDead == false)
+        {
+            altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
+            distanzaCorrente = player.position.x;
+        }
 
     }
-    */
+   */
 
     private void OnTriggerEnter2D(Collider2D coll) 
     {
@@ -133,8 +159,10 @@ public class MobileMov : MonoBehaviour
             {
                 distanzaCorrente = 0;
                 altezzaCorrente = 0;
-                deathPanel.SetActive(true);
-                Destroy(this.gameObject);
+                playerCollider.enabled = false;
+                player.constraints = RigidbodyConstraints2D.FreezePosition;
+                isDead = true;
+                StartCoroutine(IntervalloMorte(1.1f));
             }
         }
 
@@ -148,6 +176,24 @@ public class MobileMov : MonoBehaviour
 
         
     }
+    
+   IEnumerator IntervalloMorte(float waitTime)
+   {
+       //Print the time of when the function is first called.
+       Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(waitTime);
+
+       deathPanel.SetActive(true);
+       Destroy(this.gameObject);
+
+       //After we have waited 5 seconds print the time again.
+       Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+
+
+   }
+   
 
 
     public void JumpAction() //FUNZIONE DI SALTO
@@ -162,7 +208,7 @@ public class MobileMov : MonoBehaviour
 
     private void WalkRight() //FUNZIONE DI CAMMINATA VERSO DESTRA
     {
-        if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && IsGrounded()) //SE NON STA SALTANDO E SI TROVA SUL TERRENO, MANDA L'ANIMAZIONE WALK
+        if (!(animazione.GetCurrentAnimatorStateInfo(0).IsName("jump")) && IsGrounded() && isDead == false) //SE NON STA SALTANDO E SI TROVA SUL TERRENO, MANDA L'ANIMAZIONE WALK
         {
             animazione.Play("walk");
         }
@@ -200,9 +246,66 @@ public class MobileMov : MonoBehaviour
     {
         if (player.velocity.y == 0)
         {
+            isShifting = true;
             animazione.Play("shift");
+            player.constraints = RigidbodyConstraints2D.FreezePosition;
             StartCoroutine(IntervalloRicaricaScena());
         }
+    }
+
+    IEnumerator IntervalloRicaricaScena()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1.1f);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        if (SceneManager.GetActiveScene().name == "MG_Scena_Sample")
+        {
+
+            SceneManager.LoadScene("MG_Scena_Sample_Void");
+        }
+        else if (SceneManager.GetActiveScene().name == "MG_Scena_Sample_Void")
+        {
+            SceneManager.LoadScene("MG_Scena_Sample");
+        }
+        else if (SceneManager.GetActiveScene().name == "MG_lvl1")
+        {
+
+            SceneManager.LoadScene("MG_lvl1Void");
+        }
+        else if (SceneManager.GetActiveScene().name == "MG_lvl1Void")
+        {
+            SceneManager.LoadScene("MG_lvl1");
+        }
+        else if (SceneManager.GetActiveScene().name == "Livello_1")
+        {
+
+            SceneManager.LoadScene("Livello_1Void");
+        }
+        else if (SceneManager.GetActiveScene().name == "Livello_1Void")
+        {
+            SceneManager.LoadScene("Livello_1");
+        }
+    }
+
+    IEnumerator IntervalloRicaricaScenaPost()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        animazione.Play("shift_reversed");
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1.1f);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+
+        isShifting = false;
     }
 
     //controlla che il player tocchi terra 
@@ -237,25 +340,8 @@ public class MobileMov : MonoBehaviour
 
     
 
-    IEnumerator IntervalloRicaricaScena()
-    {
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+    
 
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(1.2f);
-
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-        if (SceneManager.GetActiveScene().name == "MG_lvl1")
-        {
-
-            SceneManager.LoadScene("MG_lvl1Void");
-        }
-        else if (SceneManager.GetActiveScene().name == "MG_lvl1Void")
-        {
-            SceneManager.LoadScene("MG_lvl1");
-        }
-    }
+    
 
 }

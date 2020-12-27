@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 181624125}
   - component: {fileID: 181624127}
   - component: {fileID: 181624126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "terreno-unit\xE0 (2)"
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 356184104}
   - component: {fileID: 356184106}
   - component: {fileID: 356184105}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "terreno-unit\xE0 (7)"
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 422531460}
   - component: {fileID: 422531459}
   - component: {fileID: 422531458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: terreno (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 545313103}
   - component: {fileID: 545313102}
   - component: {fileID: 545313101}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: New Sprite
   m_TagString: Underground
   m_Icon: {fileID: 0}
@@ -1128,7 +1128,7 @@ GameObject:
   - component: {fileID: 591900752}
   - component: {fileID: 591900754}
   - component: {fileID: 591900753}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "terreno-unit\xE0 (4)"
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 604792977}
   - component: {fileID: 604792979}
   - component: {fileID: 604792978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "terreno-unit\xE0"
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1344,7 +1344,7 @@ GameObject:
   - component: {fileID: 705947536}
   - component: {fileID: 705947538}
   - component: {fileID: 705947537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "terreno-unit\xE0 (3)"
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1450,9 +1450,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 796004704}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ostacolo
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2015,7 +2015,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15.492445
+  orthographic size: 33.062317
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2137,7 +2137,7 @@ GameObject:
   - component: {fileID: 1659469409}
   - component: {fileID: 1659469411}
   - component: {fileID: 1659469410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "terreno-unit\xE0 (1)"
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2234,55 +2234,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1736622654
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1736622656}
-  - component: {fileID: 1736622655}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Ground
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!68 &1736622655
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736622654}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.7833214, y: -1.4165993}
-  - {x: 8.5746155, y: 6.587184}
---- !u!4 &1736622656
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736622654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.886235, y: -5.79, z: -91.16406}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746789694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,7 +2595,7 @@ GameObject:
   - component: {fileID: 2037399850}
   - component: {fileID: 2037399852}
   - component: {fileID: 2037399851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "terreno-unit\xE0 (5)"
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2752,7 +2703,7 @@ GameObject:
   - component: {fileID: 2087107649}
   - component: {fileID: 2087107651}
   - component: {fileID: 2087107650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "terreno-unit\xE0 (6)"
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2882,18 +2833,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06160af21adbf9a45b80a30784dd10fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   player: {fileID: 2119148333}
   m_NewForce: {x: 0, y: 40}
   animazione: {fileID: 2119148334}
-  isActor1OnTheGround: 1
   isRiight: 1
   salto: 1
-  t: 0
-  playerCollider: {fileID: 2119148332}
   inizioLivello: {fileID: 570366398}
   joystick: {fileID: 919860724}
-  jumpButton: {fileID: 281995701}
-  shiftButton: {fileID: 1746789696}
+  collidingForce: 0
+  textCoin: {fileID: 0}
+  deathPanel: {fileID: 0}
+  playerCollider: {fileID: 2119148332}
 --- !u!61 &2119148332
 BoxCollider2D:
   m_ObjectHideFlags: 0

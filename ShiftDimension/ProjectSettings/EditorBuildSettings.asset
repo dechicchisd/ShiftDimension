@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MG_Scena_Sample.unity
     guid: 43b7fd09e80f8b64184b6a6e65040d9f
   - enabled: 1
+    path: Assets/Scenes/MG_Scena_Sample_Void.unity
+    guid: 2f3abe0a512442d44a50673c898d6926
+  - enabled: 1
     path: Assets/Scenes/DD_Shop.unity
     guid: fb8b2b67b4b1fa64eb3fbf9a4d618170
   - enabled: 1
@@ -20,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MG_lvl1Void.unity
     guid: f5ae90d7ce87f5a4bb78f4ede5303789
+  - enabled: 1
+    path: Assets/Scenes/Livello_1Void.unity
+    guid: eb12c7a2a69f3ba4d8ef463352f84ce5
+  - enabled: 1
+    path: Assets/Scenes/Livello_1.unity
+    guid: bad28c74c753f5c4ea8f1866dc20dd7f
   m_configObjects: {}
