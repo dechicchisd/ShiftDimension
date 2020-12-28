@@ -40,14 +40,12 @@ public class MobileMov : MonoBehaviour
     {
         if(isShifting == false)
         {
-            distanzaCorrente = inizioLivello.position.x;
+            transform.position = inizioLivello.position + new Vector2(0, 2f);
         }
         else
         {
             StartCoroutine(IntervalloRicaricaScenaPost());
         }
-        nuovaPosizione = new Vector2( distanzaCorrente, altezzaCorrente + 1.1f);
-        player.MovePosition(nuovaPosizione);
         animazione = GetComponent<Animator>();
         animazione.Play("rest");
         boxCollider = transform.GetComponent<BoxCollider2D>();
@@ -296,6 +294,11 @@ public class MobileMov : MonoBehaviour
     {
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        
+        nuovaPosizione = new Vector2(distanzaCorrente, altezzaCorrente + 1.1f);
+        /*player.MovePosition(nuovaPosizione);*/
+        transform.position = nuovaPosizione;
 
         animazione.Play("shift_reversed");
 

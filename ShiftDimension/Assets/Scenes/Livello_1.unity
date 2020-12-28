@@ -2919,6 +2919,7 @@ MonoBehaviour:
   collidingForce: 0
   textCoin: {fileID: 0}
   deathPanel: {fileID: 0}
+  playerCollider: {fileID: 0}
 --- !u!61 &282860679
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11966,7 +11967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1310281363
 MonoBehaviour:
   m_ObjectHideFlags: 0
