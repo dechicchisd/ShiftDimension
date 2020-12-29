@@ -7,20 +7,22 @@ public class FallingStar : MonoBehaviour
 
     public bool isRunning = false;
 
-    public Rigidbody2D leftBound;
-    public Rigidbody2D rightBound;
     public Rigidbody2D star;
-    private Vector2 velocity;
-    public Vector2 m_NewForce = new Vector2(.0000001f, .0000002f);
+    public Rigidbody2D posizioneOriginale;
+    public Vector2 initPosition;
+    public float randomNum;
+    public float randomPos;
 
-    public float posizioneInizio;
-    public float posizioneFine;
+    public float walkingSpeed;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = leftBound.position;
-        velocity = new Vector2(.00000001f, .00000001f);
+        randomNum = Random.Range(0, 10000);
+        randomPos = Random.Range(0, 60);
+        initPosition = new Vector2(posizioneOriginale.position.x + randomPos, posizioneOriginale.position.y);
+        transform.position = initPosition;
     }
 
     // Update is called once per frame
@@ -28,8 +30,9 @@ public class FallingStar : MonoBehaviour
     {
         if(isRunning == false)
         {
+            transform.position = initPosition;
             float x = Random.Range(-10000, 10000);
-            if (x % 537 == 0)
+            if (x % randomNum == 0)
             {
                 isRunning = true;
             }
@@ -42,29 +45,11 @@ public class FallingStar : MonoBehaviour
             else
             {/*
                 transform.position = star.position - m_NewForce;*/
-                star.MovePosition(rightBound.position + velocity * Time.fixedDeltaTime);
+                star.transform.Translate(-walkingSpeed * Time.deltaTime, -walkingSpeed * Time.deltaTime, 0, Space.World);
             }
         }
-        
+        initPosition = new Vector2(posizioneOriginale.position.x + randomPos, posizioneOriginale.position.y);
 
     }
 
-    IEnumerator IntervalloRicaricaScena()
-    {
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-
-
-        leftBound.MovePosition(rightBound.position);
-        /*player.MovePosition(nuovaPosizione);*/
-
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(3f);
-
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-
-    }
 }
