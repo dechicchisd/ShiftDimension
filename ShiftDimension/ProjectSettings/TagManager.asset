@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Coin
   - Death
+  - RockTrigger
   layers:
   - Default
   - TransparentFX

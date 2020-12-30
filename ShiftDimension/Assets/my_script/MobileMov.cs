@@ -11,7 +11,7 @@ using TMPro;
 
 public class MobileMov : MonoBehaviour
 {
-    [SerializeField] private LayerMask platformLayerMask;
+    [SerializeField] private LayerMask platformLayerMask = new LayerMask();
     private bool isDead = false;
     public static bool isShifting;
     public Rigidbody2D player;
