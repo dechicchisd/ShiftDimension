@@ -8,8 +8,9 @@ TagManager:
   - Underground
   - Enemy
   - Coin
-  - Death
   - RockTrigger
+  - Rock
+  - Fall
   layers:
   - Default
   - TransparentFX

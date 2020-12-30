@@ -4427,7 +4427,7 @@ GameObject:
   - component: {fileID: 928353463}
   m_Layer: 0
   m_Name: Death (1)
-  m_TagString: Death
+  m_TagString: Fall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4462,7 +4462,7 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 28.4, y: 0}
+  - {x: 52.5, y: 0}
   - {x: -89.89, y: 0}
 --- !u!1 &958293193
 GameObject:
@@ -7536,10 +7536,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c342dc22a586d574c8a46f3b646bf94f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1311284068577615512, guid: a2aaf8710e8d486478ae1d2167fb9492, type: 3}
+  rock: {fileID: 1311284068577615518, guid: a2aaf8710e8d486478ae1d2167fb9492, type: 3}
   pos: {x: 61.5, y: 25.23}
-  destroyTime: 4
-  readyTime: 4
+  destroyTime: 6
+  readyTime: 15
 --- !u!1 &1622217953
 GameObject:
   m_ObjectHideFlags: 0

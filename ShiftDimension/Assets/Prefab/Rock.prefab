@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1311284068577615519}
   m_Layer: 0
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,9 +157,10 @@ PolygonCollider2D:
       - {x: -1.4572312, y: -0.27532315}
       - {x: -1.31, y: -0.45}
       - {x: -1.28, y: -0.53}
-      - {x: -1.5259825, y: -1.032774}
+      - {x: -1.2875496, y: -0.97313356}
       - {x: -0.9, y: -1.04}
       - {x: -0.79999995, y: -1.13}
+      - {x: -0.7267895, y: -1.3032033}
       - {x: -0.53, y: -1.28}
       - {x: -0.3706368, y: -1.4319365}
       - {x: -0.28, y: -1.35}

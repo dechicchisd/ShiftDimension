@@ -164,12 +164,22 @@ public class MobileMov : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.tag == "Death")
+        else if(collision.gameObject.tag == "Fall")
         {
             distanzaCorrente = 0;
             altezzaCorrente = 0;
             deathPanel.SetActive(true);
             Destroy(this.gameObject);
+        }
+
+        else if(collision.gameObject.tag == "Rock")
+        {
+            distanzaCorrente = 0;
+            altezzaCorrente = 0;
+            playerCollider.enabled = false;
+            player.constraints = RigidbodyConstraints2D.FreezePosition;
+            isDead = true;
+            StartCoroutine(IntervalloMorte(1.1f));
         }
 
         

@@ -4,38 +4,34 @@ using UnityEngine;
 
 public class RockManager : MonoBehaviour
 {
-    public Rigidbody2D rock;
+    public GameObject rock;
     public Vector2 pos;
     public float destroyTime;
     public float readyTime;
     private bool triggerReady = true;
-    private Rigidbody2D clone;
-
-    private void Update()
-    {
-        if (clone != null && clone.velocity.x <= 0)
-        {
-            //StartCoroutine(WaitAndDestroy(destroyTime, readyTime));
-            Destroy(clone, 2.1f);
-        }
-    }
+    private GameObject clone;
+    private Rigidbody2D rb;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (triggerReady)
         {
-            clone = Instantiate(rock, pos, Quaternion.identity);
+            rb = Instantiate(rock.GetComponent<Rigidbody2D>(), pos, Quaternion.identity);
+            clone = rb.gameObject;
             triggerReady = false;
+            Destroy(clone, destroyTime);
+            StartCoroutine(TriggerUp(readyTime));
         }
+        
     }
 
-    IEnumerator WaitAndDestroy(float waitTime, float readyTime)
+    IEnumerator TriggerUp(float readyTime)
     {
-        yield return new WaitForSeconds(waitTime);
-        
-        Destroy(clone);
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(readyTime);
         triggerReady = true;
+
+
 
     }
 }
