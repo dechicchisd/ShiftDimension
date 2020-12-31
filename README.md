@@ -44,10 +44,10 @@ DELFINO:
 1. Zona di morte (delimitata da due rigidbody null)
 2. Movimento alieno delimitato da due rigidbody null
 3. Fisica salite e discese
-__________________________________________
-
 4. Pozza d'acido quando uccidi nemico
 5. Rocce che cadono
+__________________________________________
+
 6. Piattaforme che si muovono
 7. Nemici che lanciano oggetti
 8. Meccanica stile goomba scheletrici
