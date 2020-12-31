@@ -11,6 +11,8 @@ TagManager:
   - RockTrigger
   - Rock
   - Fall
+  - Acid
+  - AcidEnemy
   layers:
   - Default
   - TransparentFX

@@ -138,6 +138,16 @@ public class MobileMov : MonoBehaviour
             Destroy(coll.gameObject);
             textCoin.text = numCoin.ToString("0");
         }
+
+        if (coll.tag == "Acid")
+        {
+            distanzaCorrente = 0;
+            altezzaCorrente = 0;
+            playerCollider.enabled = false;
+            player.constraints = RigidbodyConstraints2D.FreezePosition;
+            isDead = true;
+            StartCoroutine(IntervalloMorte(1.1f));
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)  //CHIAMATA QUANDO C'è UNA COLLISIONE TRA DUE COLLIDER
@@ -149,8 +159,30 @@ public class MobileMov : MonoBehaviour
             if (collision.contacts[0].point.y == collision.contacts[1].point.y) //SE DUE PUNTI DI COLLISIONE CONSECUTIVI HANNO LA STESSA Y ALLORA LA COLLISIONE
                                                                                 //è SULLA FACCIA SUPERIORE DEL NEMICO
             {
+                Enemy e = collision.collider.GetComponent<Enemy>();
                 player.AddForce(new Vector2(0, collidingForce), ForceMode2D.Impulse);
-                Destroy(collision.gameObject);
+                e.Dies();
+            }
+
+            else
+            {
+                distanzaCorrente = 0;
+                altezzaCorrente = 0;
+                playerCollider.enabled = false;
+                player.constraints = RigidbodyConstraints2D.FreezePosition;
+                isDead = true;
+                StartCoroutine(IntervalloMorte(1.1f));
+            }
+        }
+
+        else if (collision.gameObject.tag == "AcidEnemy")
+        {
+            if (collision.contacts[0].point.y == collision.contacts[1].point.y) //SE DUE PUNTI DI COLLISIONE CONSECUTIVI HANNO LA STESSA Y ALLORA LA COLLISIONE
+                                                                                //è SULLA FACCIA SUPERIORE DEL NEMICO
+            {
+                AcidEnemy e = collision.collider.GetComponent<AcidEnemy>();
+                player.AddForce(new Vector2(0, collidingForce), ForceMode2D.Impulse);
+                e.Dies();
             }
 
             else

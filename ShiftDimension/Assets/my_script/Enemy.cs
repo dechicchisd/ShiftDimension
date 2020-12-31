@@ -41,10 +41,11 @@ public class Enemy : MonoBehaviour
         {
             isRight = false;
         }
-
+        float xground = GetComponent<Collider2D>().bounds.center.x;
+        float yground = GetComponent<Collider2D>().bounds.center.y - GetComponent<Collider2D>().bounds.size.y/2;
     }
 
-    public void Hurt()
+    public virtual void Dies()
     {
         Destroy(this.gameObject);
     }
