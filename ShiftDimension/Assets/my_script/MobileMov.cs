@@ -206,17 +206,25 @@ public class MobileMov : MonoBehaviour
 
         else if(collision.gameObject.tag == "Rock")
         {
-            distanzaCorrente = 0;
-            altezzaCorrente = 0;
-            playerCollider.enabled = false;
-            player.constraints = RigidbodyConstraints2D.FreezePosition;
-            isDead = true;
-            StartCoroutine(IntervalloMorte(1.1f));
+            Rigidbody2D rock = collision.gameObject.GetComponent<Rigidbody2D>();
+            rock.AddForce(new Vector2(10 * Math.Abs(rock.velocity.x), 0), ForceMode2D.Impulse);
+            if (Math.Abs(collision.relativeVelocity.x) > 3)
+            {
+                distanzaCorrente = 0;
+                altezzaCorrente = 0;
+                //playerCollider.enabled = false;
+                //player.constraints = RigidbodyConstraints2D.FreezePosition;
+                isDead = true;
+                StartCoroutine(IntervalloMorte(1.1f));
+                
+                //Destroy(this.gameObject, 1.1f);
+                //deathPanel.SetActive(true);
+            }
         }
 
         
     }
-    
+ 
    IEnumerator IntervalloMorte(float waitTime)
    {
        //Print the time of when the function is first called.
