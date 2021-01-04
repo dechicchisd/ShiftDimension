@@ -13,6 +13,7 @@ TagManager:
   - Fall
   - Acid
   - AcidEnemy
+  - FloatingPlatform
   layers:
   - Default
   - TransparentFX

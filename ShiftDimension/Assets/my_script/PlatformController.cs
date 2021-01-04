@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
-    public Transform pos1, pos2;
+    public Transform leftBound, rightBound;
     public float speed;
-    public Transform startPos;
-    Vector3 nextPos;
+    Vector2 nextPos;
 
     private void Start()
     {
-        nextPos = startPos.position;
+
     }
     // Update is called once per frame
     void Update()
     {
 
-        if(transform.position == pos1.position)
+        if(transform.position.x <= leftBound.position.x)
         {
-            nextPos = pos2.position;
+            nextPos.x = rightBound.position.x;
         }
 
-        if(transform.position == pos2.position)
+        if(transform.position.x >= rightBound.position.x)
         {
-            nextPos = pos1.position;
+            nextPos.x = leftBound.position.x;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+
+        transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }
 }

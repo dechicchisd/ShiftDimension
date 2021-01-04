@@ -175,6 +175,11 @@ public class MobileMov : MonoBehaviour
             }
         }
 
+        else if(collision.gameObject.tag == "FloatingPlatform")
+        {
+            player.transform.parent = collision.gameObject.transform;
+        }
+
         else if (collision.gameObject.tag == "AcidEnemy")
         {
             if (collision.contacts[0].point.y == collision.contacts[1].point.y) //SE DUE PUNTI DI COLLISIONE CONSECUTIVI HANNO LA STESSA Y ALLORA LA COLLISIONE
@@ -224,8 +229,16 @@ public class MobileMov : MonoBehaviour
 
         
     }
- 
-   IEnumerator IntervalloMorte(float waitTime)
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "FloatingPlatform")
+        {
+            player.transform.parent = null;
+        }
+    }
+
+    IEnumerator IntervalloMorte(float waitTime)
    {
        //Print the time of when the function is first called.
        Debug.Log("Started Coroutine at timestamp : " + Time.time);
