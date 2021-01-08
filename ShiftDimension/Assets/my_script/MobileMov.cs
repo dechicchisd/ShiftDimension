@@ -175,6 +175,11 @@ public class MobileMov : MonoBehaviour
             }
         }
 
+        else if(collision.gameObject.tag == "FloatingPlatform")
+        {
+            player.transform.parent = collision.gameObject.transform;
+        }
+
         else if (collision.gameObject.tag == "AcidEnemy")
         {
             if (collision.contacts[0].point.y == collision.contacts[1].point.y) //SE DUE PUNTI DI COLLISIONE CONSECUTIVI HANNO LA STESSA Y ALLORA LA COLLISIONE
@@ -206,18 +211,34 @@ public class MobileMov : MonoBehaviour
 
         else if(collision.gameObject.tag == "Rock")
         {
-            distanzaCorrente = 0;
-            altezzaCorrente = 0;
-            playerCollider.enabled = false;
-            player.constraints = RigidbodyConstraints2D.FreezePosition;
-            isDead = true;
-            StartCoroutine(IntervalloMorte(1.1f));
+            Rigidbody2D rock = collision.gameObject.GetComponent<Rigidbody2D>();
+            rock.AddForce(new Vector2(10 * Math.Abs(rock.velocity.x), 0), ForceMode2D.Impulse);
+            if (Math.Abs(collision.relativeVelocity.x) > 3)
+            {
+                distanzaCorrente = 0;
+                altezzaCorrente = 0;
+                //playerCollider.enabled = false;
+                //player.constraints = RigidbodyConstraints2D.FreezePosition;
+                isDead = true;
+                StartCoroutine(IntervalloMorte(1.1f));
+                
+                //Destroy(this.gameObject, 1.1f);
+                //deathPanel.SetActive(true);
+            }
         }
 
         
     }
-    
-   IEnumerator IntervalloMorte(float waitTime)
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "FloatingPlatform")
+        {
+            player.transform.parent = null;
+        }
+    }
+
+    IEnumerator IntervalloMorte(float waitTime)
    {
        //Print the time of when the function is first called.
        Debug.Log("Started Coroutine at timestamp : " + Time.time);

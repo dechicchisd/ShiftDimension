@@ -46,9 +46,9 @@ DELFINO:
 3. Fisica salite e discese
 4. Pozza d'acido quando uccidi nemico
 5. Rocce che cadono
-__________________________________________
-
 6. Piattaforme che si muovono
+_________________________________________________________________
+
 7. Nemici che lanciano oggetti
 8. Meccanica stile goomba scheletrici
 
