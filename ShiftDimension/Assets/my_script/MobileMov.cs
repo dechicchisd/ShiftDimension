@@ -131,13 +131,13 @@ public class MobileMov : MonoBehaviour
    */
 
     private void OnTriggerEnter2D(Collider2D coll) 
-    {
+    {/*
         float numCoin = System.Single.Parse(textCoin.text) + 1;
         if(coll.tag == "Coin")
         {
             Destroy(coll.gameObject);
             textCoin.text = numCoin.ToString("0");
-        }
+        }*/
 
         if (coll.tag == "Acid")
         {
