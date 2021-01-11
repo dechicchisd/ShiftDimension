@@ -22,7 +22,7 @@ public class Throw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.position.x > leftBound.position.x && player.position.x < rightBound.position.x && canThrow)
+        if (player != null && player.position.x > leftBound.position.x && player.position.x < rightBound.position.x && canThrow)
         {
             StartCoroutine(Reload());
         }
