@@ -168,8 +168,8 @@ public class MobileMov : MonoBehaviour
             {
                 distanzaCorrente = 0;
                 altezzaCorrente = 0;
-                playerCollider.enabled = false;
-                player.constraints = RigidbodyConstraints2D.FreezePosition;
+                playerCollider.enabled = false;/*
+                player.constraints = RigidbodyConstraints2D.FreezePosition;*/
                 isDead = true;
                 StartCoroutine(IntervalloMorte(1.1f));
             }
@@ -194,8 +194,8 @@ public class MobileMov : MonoBehaviour
             {
                 distanzaCorrente = 0;
                 altezzaCorrente = 0;
-                playerCollider.enabled = false;
-                player.constraints = RigidbodyConstraints2D.FreezePosition;
+                playerCollider.enabled = false;/*
+                player.constraints = RigidbodyConstraints2D.FreezePosition;*/
                 isDead = true;
                 StartCoroutine(IntervalloMorte(1.1f));
             }
