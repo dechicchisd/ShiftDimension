@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ParallaxEffect : MonoBehaviour
 {
-    private float lengthX, lengthY;
     private Vector2 startPos;
     public GameObject cam;
     public float parallaxMultiplier;
@@ -12,17 +11,16 @@ public class ParallaxEffect : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        lengthX = GetComponent<SpriteRenderer>().bounds.size.x;
-        lengthY = GetComponent<SpriteRenderer>().bounds.size.y;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        float temp = cam.transform.position.x * (1 - parallaxMultiplier);
+       
         float distX = cam.transform.position.x * parallaxMultiplier;
         float distY = cam.transform.position.y * parallaxMultiplier;
 
         transform.position = new Vector2(startPos.x + distX, startPos.y + distY);
-
     }
 }
