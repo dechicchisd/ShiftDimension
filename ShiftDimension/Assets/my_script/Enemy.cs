@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private bool isRight = false;
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if(isRight == false)
         {

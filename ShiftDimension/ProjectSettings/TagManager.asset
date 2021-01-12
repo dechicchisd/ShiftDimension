@@ -14,6 +14,7 @@ TagManager:
   - Acid
   - AcidEnemy
   - FloatingPlatform
+  - ThrownOff
   layers:
   - Default
   - TransparentFX

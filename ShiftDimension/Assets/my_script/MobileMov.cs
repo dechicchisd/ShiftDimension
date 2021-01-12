@@ -140,7 +140,17 @@ public class MobileMov : MonoBehaviour
             textCoin.text = numCoin.ToString("0");
         }
 
-        if (coll.tag == "Acid")
+        else if (coll.tag == "Acid")
+        {
+            distanzaCorrente = 0;
+            altezzaCorrente = 0;
+            playerCollider.enabled = false;
+            player.constraints = RigidbodyConstraints2D.FreezePosition;
+            isDead = true;
+            StartCoroutine(IntervalloMorte(1.1f));
+        }
+
+        else if (coll.tag == "ThrownOff")
         {
             distanzaCorrente = 0;
             altezzaCorrente = 0;
