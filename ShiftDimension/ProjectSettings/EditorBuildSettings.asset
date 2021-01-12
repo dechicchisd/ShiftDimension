@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Livello_1.unity
     guid: bad28c74c753f5c4ea8f1866dc20dd7f
+  - enabled: 1
+    path: Assets/Scenes/MG_PlayMode.unity
+    guid: 2046834fa1873664ebd9e0b0fbc7aa3d
   m_configObjects: {}

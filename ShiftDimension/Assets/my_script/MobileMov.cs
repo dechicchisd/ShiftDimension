@@ -132,9 +132,10 @@ public class MobileMov : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll) 
     {
-        float numCoin = System.Single.Parse(textCoin.text) + 1;
+        
         if(coll.tag == "Coin")
         {
+            float numCoin = System.Single.Parse(textCoin.text) + 1;
             Destroy(coll.gameObject);
             textCoin.text = numCoin.ToString("0");
         }
@@ -217,8 +218,8 @@ public class MobileMov : MonoBehaviour
             {
                 distanzaCorrente = 0;
                 altezzaCorrente = 0;
-                //playerCollider.enabled = false;
-                //player.constraints = RigidbodyConstraints2D.FreezePosition;
+                playerCollider.enabled = false;
+                player.constraints = RigidbodyConstraints2D.FreezePosition;
                 isDead = true;
                 StartCoroutine(IntervalloMorte(1.1f));
                 

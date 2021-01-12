@@ -11,4 +11,9 @@ public class DeathPanelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);        
     }
 
+    public void Exit()
+    {
+        SceneManager.LoadScene("MG_PlayMode");
+    }
+
 }

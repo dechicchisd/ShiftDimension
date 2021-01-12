@@ -26,7 +26,6 @@ public class PlatformController : MonoBehaviour
             nextPos.x = leftBound.position.x;
         }
 
-
         transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }
 }

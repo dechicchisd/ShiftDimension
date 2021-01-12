@@ -23,22 +23,19 @@ public class Vegetation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(player.position.x > posizione.x)
+        if (player != null)
         {
-            if(veg.position.x < fineNullsx.position.x)
+            if (player.position.x > posizione.x && veg.position.x < fineNullsx.position.x)
             {
                 transform.position = new Vector2(inizioNulldx.position.x + (veg.position.x - inizioNullsx.position.x), veg.position.y);
             }
-        }
-        else if(player.position.x < posizione.x)
-        {
-            if (veg.position.x > inizioNulldx.position.x)
+
+            else if (player.position.x < posizione.x && veg.position.x > inizioNulldx.position.x)
             {
                 transform.position = new Vector2(fineNullsx.position.x + (veg.position.x - fineNulldx.position.x), veg.position.y);
             }
-        }
 
-        posizione.x = player.position.x;
+            posizione.x = player.position.x;
+        }
     }
 }

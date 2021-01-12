@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -790,7 +790,6 @@ MonoBehaviour:
   player: {fileID: 128554294}
   leftBound: {fileID: 384344397}
   rightBound: {fileID: 1832498847}
-  shootPos: {fileID: 198274873}
 --- !u!61 &167290281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10243,6 +10242,7 @@ GameObject:
   - component: {fileID: 1934061192}
   - component: {fileID: 1934061191}
   - component: {fileID: 1934061190}
+  - component: {fileID: 1934061193}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -10312,7 +10312,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1934061191}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1934061193}
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1934061191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10350,6 +10361,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934061188}
   m_CullTransparentMesh: 0
+--- !u!114 &1934061193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934061188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485a32742cf0c60469c31a1794826641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1950815281
 GameObject:
   m_ObjectHideFlags: 0
