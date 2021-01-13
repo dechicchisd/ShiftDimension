@@ -4242,6 +4242,7 @@ GameObject:
   - component: {fileID: 149714499}
   - component: {fileID: 149714498}
   - component: {fileID: 149714497}
+  - component: {fileID: 149714501}
   m_Layer: 0
   m_Name: Alien
   m_TagString: AcidEnemy
@@ -4279,6 +4280,7 @@ MonoBehaviour:
   leftBound: {fileID: 508845671}
   rightBound: {fileID: 1470521782}
   walkingSpeed: 5
+  animazione: {fileID: 723866937}
   acid: {fileID: 7488449709215016421, guid: c96e7a0c92f054b49ae853566476fc40, type: 3}
 --- !u!61 &149714498
 BoxCollider2D:
@@ -4377,6 +4379,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &149714501
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149714495}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b147bc0fb9711c4f931cb1b8f626c92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &151759474
 GameObject:
   m_ObjectHideFlags: 0
@@ -6613,6 +6634,7 @@ GameObject:
   - component: {fileID: 224191820}
   - component: {fileID: 224191819}
   - component: {fileID: 224191818}
+  - component: {fileID: 224191822}
   m_Layer: 0
   m_Name: Alien
   m_TagString: AcidEnemy
@@ -6650,6 +6672,7 @@ MonoBehaviour:
   leftBound: {fileID: 1824132628}
   rightBound: {fileID: 857803197}
   walkingSpeed: 5
+  animazione: {fileID: 723866937}
   acid: {fileID: 7488449709215016421, guid: c96e7a0c92f054b49ae853566476fc40, type: 3}
 --- !u!61 &224191819
 BoxCollider2D:
@@ -6748,6 +6771,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &224191822
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224191816}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b147bc0fb9711c4f931cb1b8f626c92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &225962657
 GameObject:
   m_ObjectHideFlags: 0
@@ -10266,6 +10308,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &363499627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 363499629}
+  - component: {fileID: 363499628}
+  m_Layer: 0
+  m_Name: 0_limite_alto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!50 &363499628
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363499627}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!4 &363499629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363499627}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -247.50412, y: 28.150517, z: 189.21875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1891621025}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366648309
 GameObject:
   m_ObjectHideFlags: 0
@@ -10752,6 +10846,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &376707414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 376707415}
+  - component: {fileID: 376707416}
+  m_Layer: 0
+  m_Name: 0_camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &376707415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376707414}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -247.50412, y: 14.1505165, z: 189.21875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1891621025}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &376707416
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376707414}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &378157163
 GameObject:
   m_ObjectHideFlags: 0
@@ -22512,6 +22658,7 @@ GameObject:
   - component: {fileID: 723866935}
   - component: {fileID: 723866934}
   - component: {fileID: 723866933}
+  - component: {fileID: 723866937}
   m_Layer: 0
   m_Name: Alien
   m_TagString: AcidEnemy
@@ -22549,6 +22696,7 @@ MonoBehaviour:
   leftBound: {fileID: 1520272591}
   rightBound: {fileID: 1517507393}
   walkingSpeed: 5
+  animazione: {fileID: 723866937}
   acid: {fileID: 7488449709215016421, guid: c96e7a0c92f054b49ae853566476fc40, type: 3}
 --- !u!61 &723866934
 BoxCollider2D:
@@ -22647,6 +22795,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &723866937
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723866931}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b147bc0fb9711c4f931cb1b8f626c92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &731239645
 GameObject:
   m_ObjectHideFlags: 0
@@ -27151,6 +27318,7 @@ MonoBehaviour:
   leftBound: {fileID: 1234778763}
   rightBound: {fileID: 1568051463}
   walkingSpeed: 5
+  animazione: {fileID: 723866937}
 --- !u!61 &869922924
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30172,8 +30340,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b64048db5850446af2c352d0480d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 9, z: -5}
+  offset: {x: 0, y: 0, z: -5}
   target: {fileID: 1382736820}
+  zero_camera: {fileID: 376707416}
+  zero_limite_superiore: {fileID: 363499628}
+  zero_limite_inferiore: {fileID: 1210962253}
+  uno_camera: {fileID: 1209232537}
+  posizioneCamera: 0
 --- !u!114 &970137826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30264,7 +30437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 970137824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.01, y: 1.55, z: -48.8}
+  m_LocalPosition: {x: 21.799988, y: 0, z: -48.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -33178,6 +33351,7 @@ GameObject:
   - component: {fileID: 1050905274}
   - component: {fileID: 1050905273}
   - component: {fileID: 1050905272}
+  - component: {fileID: 1050905276}
   m_Layer: 0
   m_Name: Alien
   m_TagString: AcidEnemy
@@ -33215,6 +33389,7 @@ MonoBehaviour:
   leftBound: {fileID: 158494578}
   rightBound: {fileID: 1761699100}
   walkingSpeed: 5
+  animazione: {fileID: 723866937}
   acid: {fileID: 7488449709215016421, guid: c96e7a0c92f054b49ae853566476fc40, type: 3}
 --- !u!61 &1050905273
 BoxCollider2D:
@@ -33313,6 +33488,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1050905276
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050905270}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b147bc0fb9711c4f931cb1b8f626c92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1056684505
 GameObject:
   m_ObjectHideFlags: 0
@@ -39241,6 +39435,110 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1209232536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1209232538}
+  - component: {fileID: 1209232537}
+  m_Layer: 0
+  m_Name: 1_camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!50 &1209232537
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209232536}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!4 &1209232538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209232536}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -247.50412, y: -13.8494835, z: 189.21875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1891621025}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1210962251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1210962252}
+  - component: {fileID: 1210962253}
+  m_Layer: 0
+  m_Name: 0_limite_basso
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1210962252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210962251}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -247.30412, y: -1.4494839, z: 189.21875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1891621025}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1210962253
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210962251}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1213656656
 GameObject:
   m_ObjectHideFlags: 0
@@ -39367,6 +39665,7 @@ GameObject:
   - component: {fileID: 1216697938}
   - component: {fileID: 1216697937}
   - component: {fileID: 1216697936}
+  - component: {fileID: 1216697940}
   m_Layer: 0
   m_Name: Alien
   m_TagString: AcidEnemy
@@ -39404,6 +39703,7 @@ MonoBehaviour:
   leftBound: {fileID: 1289379994}
   rightBound: {fileID: 1234531874}
   walkingSpeed: 5
+  animazione: {fileID: 723866937}
   acid: {fileID: 7488449709215016421, guid: c96e7a0c92f054b49ae853566476fc40, type: 3}
 --- !u!61 &1216697937
 BoxCollider2D:
@@ -39502,6 +39802,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1216697940
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216697934}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b147bc0fb9711c4f931cb1b8f626c92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1227271436
 GameObject:
   m_ObjectHideFlags: 0
@@ -41670,6 +41989,7 @@ GameObject:
   - component: {fileID: 1282994190}
   - component: {fileID: 1282994189}
   - component: {fileID: 1282994188}
+  - component: {fileID: 1282994192}
   m_Layer: 0
   m_Name: Alien
   m_TagString: AcidEnemy
@@ -41707,6 +42027,7 @@ MonoBehaviour:
   leftBound: {fileID: 1686052908}
   rightBound: {fileID: 1363674913}
   walkingSpeed: 5
+  animazione: {fileID: 723866937}
   acid: {fileID: 7488449709215016421, guid: c96e7a0c92f054b49ae853566476fc40, type: 3}
 --- !u!61 &1282994189
 BoxCollider2D:
@@ -41805,6 +42126,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1282994192
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282994186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b147bc0fb9711c4f931cb1b8f626c92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1284118455
 GameObject:
   m_ObjectHideFlags: 0
@@ -45062,7 +45402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382736817}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.370003, y: -2.58, z: 0}
+  m_LocalPosition: {x: 22.370003, y: -4.56, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48677,7 +49017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517507391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.25, y: -58.31, z: 0}
+  m_LocalPosition: {x: -24.2, y: -58.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 774671648}
@@ -48810,7 +49150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520272589}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.45, y: -58.28, z: 0}
+  m_LocalPosition: {x: -32.85, y: -58.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 774671648}
@@ -49492,6 +49832,7 @@ MonoBehaviour:
   leftBound: {fileID: 985295308}
   rightBound: {fileID: 206482696}
   walkingSpeed: 5
+  animazione: {fileID: 723866937}
 --- !u!61 &1546388316
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -61803,6 +62144,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1891621024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1891621025}
+  m_Layer: 0
+  m_Name: limiti_camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1891621025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891621024}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 193.50412, y: -14.1505165, z: -3357.4688}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1210962252}
+  - {fileID: 376707415}
+  - {fileID: 363499629}
+  - {fileID: 1209232538}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895088088
 GameObject:
   m_ObjectHideFlags: 0
@@ -64198,6 +64573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1971656469}
+  - component: {fileID: 1971656470}
   m_Layer: 0
   m_Name: montagne
   m_TagString: Untagged
@@ -64243,6 +64619,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1971656470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971656468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1b4b881f25de3449c1d4d7f23b135e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 970137824}
+  parallaxMultiplier: -0.8
 --- !u!1 &1980478417
 GameObject:
   m_ObjectHideFlags: 0
