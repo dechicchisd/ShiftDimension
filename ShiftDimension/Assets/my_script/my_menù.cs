@@ -17,7 +17,7 @@ public class my_menù : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("MG_Scena_Sample");
+        SceneManager.LoadScene("Livello_1");
     }
 
     public void ChooseLevel()

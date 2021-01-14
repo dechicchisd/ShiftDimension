@@ -10,7 +10,8 @@ public class PlatformController : MonoBehaviour
 
     private void Start()
     {
-
+        transform.position = leftBound.position;
+        nextPos = rightBound.position;
     }
     // Update is called once per frame
     void Update()

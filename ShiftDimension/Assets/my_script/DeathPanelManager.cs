@@ -5,10 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class DeathPanelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);        
+        if (SceneManager.GetActiveScene().buildIndex == SceneManager.GetSceneByName("Livello_1Void").buildIndex) {
+            SceneManager.LoadScene("Livello_1");
+        }
+
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     public void Exit()

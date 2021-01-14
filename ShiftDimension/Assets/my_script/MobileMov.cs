@@ -52,7 +52,7 @@ public class MobileMov : MonoBehaviour
         isDead = false;
     }
 
-  //  /* ---------------------- USO DELLA TASTIERA --------------------------
+    /* ---------------------- USO DELLA TASTIERA --------------------------*/
     // Update is called once per frame
     void Update()
     {
@@ -88,12 +88,13 @@ public class MobileMov : MonoBehaviour
         {
             altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
             distanzaCorrente = player.position.x;
-        }
+        } 
 
-    }
-  // a   */
-    /* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------
-    // Update is called once per frame
+    } 
+  
+/* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------
+// Update is called once per frame
+
     void Update()
     {
         if (!IsGrounded() && player.position.y < altezzaCorrente && isDead == false && isShifting == false)
@@ -127,8 +128,8 @@ public class MobileMov : MonoBehaviour
             distanzaCorrente = player.position.x;
         }
 
-    }
-   */
+    } */
+   
 
     private void OnTriggerEnter2D(Collider2D coll) 
     {
@@ -188,7 +189,7 @@ public class MobileMov : MonoBehaviour
 
         else if(collision.gameObject.tag == "FloatingPlatform")
         {
-            player.transform.parent = collision.gameObject.transform;
+            transform.parent = collision.gameObject.transform;
         }
 
         else if (collision.gameObject.tag == "AcidEnemy")
