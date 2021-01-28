@@ -7833,11 +7833,12 @@ MonoBehaviour:
   leftBound: {fileID: 0}
   rightBound: {fileID: 0}
   walkingSpeed: 0
+  animazione: {fileID: 0}
   obj: {fileID: 3570139062754547949, guid: 689e3f34ee69b6d4a9b446a73bdaea0d, type: 3}
   player: {fileID: 128554294}
   leftRange: {fileID: 384344397}
   rightRange: {fileID: 1832498847}
-  throwVel: {x: 14.47, y: 40}
+  throwVel: {x: 8, y: 20}
 --- !u!61 &167290281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16780,7 +16781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384344395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30, y: -14.398805, z: 5.2043457}
+  m_LocalPosition: {x: -15, y: -14.398805, z: 5.2043457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1827181527}
@@ -23581,6 +23582,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 3, z: -7}
   target: {fileID: 128554294}
+  zero_camera: {fileID: 0}
+  zero_limite_superiore: {fileID: 0}
+  zero_limite_inferiore: {fileID: 0}
+  uno_camera: {fileID: 0}
+  posizioneCamera: 0
 --- !u!1 &519795044
 GameObject:
   m_ObjectHideFlags: 0
@@ -74768,6 +74774,7 @@ MonoBehaviour:
   leftBound: {fileID: 1061825605}
   rightBound: {fileID: 896620230}
   walkingSpeed: 5
+  animazione: {fileID: 0}
   acid: {fileID: 7488449709215016421, guid: c96e7a0c92f054b49ae853566476fc40, type: 3}
 --- !u!1 &1790988133
 GameObject:
@@ -76143,7 +76150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827181526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 156.42, y: 10.251228, z: -64.15814}
+  m_LocalPosition: {x: 45.15, y: 10.251228, z: -64.15814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 167290279}
@@ -76375,7 +76382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832498845}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30, y: -14.398805, z: 5.2043457}
+  m_LocalPosition: {x: 15, y: -14.398805, z: 5.2043457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1827181527}
@@ -84567,6 +84574,7 @@ MonoBehaviour:
   leftBound: {fileID: 1167269620}
   rightBound: {fileID: 1283342488}
   walkingSpeed: 5
+  animazione: {fileID: 0}
 --- !u!61 &2041850752
 BoxCollider2D:
   m_ObjectHideFlags: 0

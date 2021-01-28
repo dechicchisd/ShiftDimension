@@ -13,6 +13,8 @@ public class RangedEnemy : Enemy
     private GameObject newObj;
     private bool canThrow;
     private bool left;
+    public Animator anim;
+    private bool rotazione = true;
     
 
 
@@ -26,6 +28,7 @@ public class RangedEnemy : Enemy
     // Update is called once per frame
     protected override void Update()
     {
+        
         if (player != null && player.position.x > leftRange.position.x && player.position.x < rightRange.position.x && canThrow)
         {
             StartCoroutine(Throw());
@@ -33,6 +36,21 @@ public class RangedEnemy : Enemy
             {
                 Destroy(newObj, 4);
             }
+        }
+        else
+        {
+            anim.Play("rest");
+        }
+        if (IsLeft() && rotazione)
+        {
+            transform.Rotate(0, 180f, 0);
+            rotazione = false;
+        }
+        else if(!IsLeft() && !rotazione)
+        {
+            transform.Rotate(0, 180f, 0);
+            rotazione = true;
+
         }
     }
 
@@ -44,6 +62,7 @@ public class RangedEnemy : Enemy
     IEnumerator Throw()
     {
         canThrow = false;
+        anim.Play("throw");
         if (IsLeft())
         {
             newObj = Instantiate(obj, new Vector2(transform.position.x - 1, transform.position.y + 2), Quaternion.identity);
@@ -57,7 +76,7 @@ public class RangedEnemy : Enemy
             Rigidbody2D newRb = newObj.GetComponent<Rigidbody2D>();
             newRb.velocity = new Vector2(-throwVel.x, throwVel.y);
         }
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1.5f);
         canThrow = true;
     }
 }
