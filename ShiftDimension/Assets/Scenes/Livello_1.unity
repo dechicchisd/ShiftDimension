@@ -50464,12 +50464,13 @@ MonoBehaviour:
   leftBound: {fileID: 1180854099}
   rightBound: {fileID: 297817847}
   walkingSpeed: 0
-  animazione: {fileID: 0}
+  animazione: {fileID: 1382736819}
   obj: {fileID: 3570139062754547949, guid: 689e3f34ee69b6d4a9b446a73bdaea0d, type: 3}
   player: {fileID: 1382736820}
   leftRange: {fileID: 1180854099}
   rightRange: {fileID: 297817847}
   throwVel: {x: 14.47, y: 40}
+  anim: {fileID: 0}
 --- !u!61 &1562907189
 BoxCollider2D:
   m_ObjectHideFlags: 0
