@@ -18,11 +18,21 @@ public class AccountManagement : MonoBehaviour
 
     IEnumerator Register()
     {
+        string url = "https://mysql.aruba.it/login/index.php?lang=it-iso-8859-1";
         WWWForm form = new WWWForm();
         form.AddField("email", emailField.text);
         form.AddField("pass", pswField.text);
-        UnityWebRequest www = new UnityWebRequest("https://mysql.aruba.it/login/index.php?lang=it-iso-8859-1");
-        yield return www;
+        UnityWebRequest www = UnityWebRequest.Post(url, form); ;
+        yield return www.SendWebRequest();
+
+        if(www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log("Record Added!\n");
+        }
 
 
     }
