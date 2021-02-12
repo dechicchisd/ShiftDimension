@@ -52,7 +52,7 @@ public class MobileMov : MonoBehaviour
         isDead = false;
     }
 
-    /* ---------------------- USO DELLA TASTIERA --------------------------*/
+    /* ---------------------- USO DELLA TASTIERA --------------------------
     // Update is called once per frame
     void Update()
     {
@@ -90,9 +90,9 @@ public class MobileMov : MonoBehaviour
             distanzaCorrente = player.position.x;
         } 
 
-    } 
+    } */
   
-/* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------
+/* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------*/
 // Update is called once per frame
 
     void Update()
@@ -128,7 +128,7 @@ public class MobileMov : MonoBehaviour
             distanzaCorrente = player.position.x;
         }
 
-    } */
+    } 
    
 
     private void OnTriggerEnter2D(Collider2D coll) 
@@ -357,11 +357,30 @@ public class MobileMov : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "Livello_1")
         {
 
-            SceneManager.LoadScene("Livello_1Void");
+            SceneManager.LoadScene("Livello_1_void");
         }
-        else if (SceneManager.GetActiveScene().name == "Livello_1Void")
+        else if (SceneManager.GetActiveScene().name == "Livello_1_void")
         {
             SceneManager.LoadScene("Livello_1");
+        }
+
+        else if (SceneManager.GetActiveScene().name == "Livello_2")
+        {
+
+            SceneManager.LoadScene("Livello_2_void");
+        }
+        else if (SceneManager.GetActiveScene().name == "Livello_2_void")
+        {
+            SceneManager.LoadScene("Livello_2");
+        }
+        else if (SceneManager.GetActiveScene().name == "Livello_3")
+        {
+
+            SceneManager.LoadScene("Livello_3_void");
+        }
+        else if (SceneManager.GetActiveScene().name == "Livello_3_void")
+        {
+            SceneManager.LoadScene("Livello_3");
         }
     }
 
