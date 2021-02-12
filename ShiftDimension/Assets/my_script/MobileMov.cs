@@ -29,6 +29,7 @@ public class MobileMov : MonoBehaviour
     private Button btn;
     private Vector2 nuovaPosizione;
     public float collidingForce;
+    public float bouncingForce;
     public TextMeshProUGUI textCoin;
     private BoxCollider2D boxCollider;
     public GameObject deathPanel;
@@ -52,7 +53,7 @@ public class MobileMov : MonoBehaviour
         isDead = false;
     }
 
-    /* ---------------------- USO DELLA TASTIERA --------------------------
+    /* ---------------------- USO DELLA TASTIERA --------------------------*/
     // Update is called once per frame
     void Update()
     {
@@ -90,9 +91,9 @@ public class MobileMov : MonoBehaviour
             distanzaCorrente = player.position.x;
         } 
 
-    } */
+    } 
   
-/* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------*/
+/* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------
 // Update is called once per frame
 
     void Update()
@@ -128,7 +129,7 @@ public class MobileMov : MonoBehaviour
             distanzaCorrente = player.position.x;
         }
 
-    } 
+    } */
    
 
     private void OnTriggerEnter2D(Collider2D coll) 
@@ -164,7 +165,8 @@ public class MobileMov : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)  //CHIAMATA QUANDO C'è UNA COLLISIONE TRA DUE COLLIDER
     {
-        
+
+        Debug.Log(collision.gameObject.tag);
 
         if (collision.gameObject.tag == "Enemy")
         {
@@ -185,6 +187,11 @@ public class MobileMov : MonoBehaviour
                 isDead = true;
                 StartCoroutine(IntervalloMorte(1.1f));
             }
+        }
+
+        else if(collision.gameObject.tag == "Bounce")
+        {
+            player.AddForce(new Vector2(0, bouncingForce), ForceMode2D.Impulse);
         }
 
         else if(collision.gameObject.tag == "FloatingPlatform")

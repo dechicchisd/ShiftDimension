@@ -17785,10 +17785,10 @@ MonoBehaviour:
   isRiight: 1
   salto: 1
   inizioLivello: {fileID: 1191758935}
-  joystick: {fileID: 0}
+  joystick: {fileID: 1433891932}
   collidingForce: 20
   textCoin: {fileID: 0}
-  deathPanel: {fileID: 0}
+  deathPanel: {fileID: 640961787}
   playerCollider: {fileID: 693608263}
 --- !u!61 &693608263
 BoxCollider2D:
@@ -39330,6 +39330,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1433891932 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  m_PrefabInstance: {fileID: 1442104654}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1434013465
 GameObject:
   m_ObjectHideFlags: 0
