@@ -15,9 +15,19 @@ public class my_menù : MonoBehaviour
         SceneManager.LoadScene("DD_Shop");
     }
 
-    public void PlayGame()
+    public void PlayLevel1()
     {
         SceneManager.LoadScene("Livello_1");
+    }
+
+    public void PlayLevel2()
+    {
+        SceneManager.LoadScene("Livello_2");
+    }
+
+    public void PlayLevel3()
+    {
+        SceneManager.LoadScene("Livello_3");
     }
 
     public void ChooseLevel()

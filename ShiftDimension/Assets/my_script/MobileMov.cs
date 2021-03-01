@@ -29,6 +29,7 @@ public class MobileMov : MonoBehaviour
     private Button btn;
     private Vector2 nuovaPosizione;
     public float collidingForce;
+    public float bouncingForce;
     public TextMeshProUGUI textCoin;
     private BoxCollider2D boxCollider;
     public GameObject deathPanel;
@@ -164,7 +165,8 @@ public class MobileMov : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)  //CHIAMATA QUANDO C'è UNA COLLISIONE TRA DUE COLLIDER
     {
-        
+
+        Debug.Log(collision.gameObject.tag);
 
         if (collision.gameObject.tag == "Enemy")
         {
@@ -185,6 +187,11 @@ public class MobileMov : MonoBehaviour
                 isDead = true;
                 StartCoroutine(IntervalloMorte(1.1f));
             }
+        }
+
+        else if(collision.gameObject.tag == "Bounce")
+        {
+            player.AddForce(new Vector2(0, bouncingForce), ForceMode2D.Impulse);
         }
 
         else if(collision.gameObject.tag == "FloatingPlatform")
@@ -357,11 +364,30 @@ public class MobileMov : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "Livello_1")
         {
 
-            SceneManager.LoadScene("Livello_1Void");
+            SceneManager.LoadScene("Livello_1_void");
         }
-        else if (SceneManager.GetActiveScene().name == "Livello_1Void")
+        else if (SceneManager.GetActiveScene().name == "Livello_1_void")
         {
             SceneManager.LoadScene("Livello_1");
+        }
+
+        else if (SceneManager.GetActiveScene().name == "Livello_2")
+        {
+
+            SceneManager.LoadScene("Livello_2_void");
+        }
+        else if (SceneManager.GetActiveScene().name == "Livello_2_void")
+        {
+            SceneManager.LoadScene("Livello_2");
+        }
+        else if (SceneManager.GetActiveScene().name == "Livello_3")
+        {
+
+            SceneManager.LoadScene("Livello_3_void");
+        }
+        else if (SceneManager.GetActiveScene().name == "Livello_3_void")
+        {
+            SceneManager.LoadScene("Livello_3");
         }
     }
 

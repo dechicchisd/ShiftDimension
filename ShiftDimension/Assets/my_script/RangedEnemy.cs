@@ -41,16 +41,19 @@ public class RangedEnemy : Enemy
         {
             anim.Play("rest");
         }
-        if (IsLeft() && rotazione)
+        if (player != null)
         {
-            transform.Rotate(0, 180f, 0);
-            rotazione = false;
-        }
-        else if(!IsLeft() && !rotazione)
-        {
-            transform.Rotate(0, 180f, 0);
-            rotazione = true;
+            if (IsLeft() && rotazione)
+            {
+                transform.Rotate(0, 180f, 0);
+                rotazione = false;
+            }
+            else if (!IsLeft() && !rotazione)
+            {
+                transform.Rotate(0, 180f, 0);
+                rotazione = true;
 
+            }
         }
     }
 
