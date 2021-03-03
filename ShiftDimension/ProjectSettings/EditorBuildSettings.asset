@@ -6,11 +6,29 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/Scenes/MG_Men\xF9_Principale.unity"
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MG_PlayMode.unity
+    guid: 2046834fa1873664ebd9e0b0fbc7aa3d
   - enabled: 1
-    path: Assets/Scenes/MG_Scena_Sample.unity
-    guid: 43b7fd09e80f8b64184b6a6e65040d9f
+    path: Assets/Scenes/MG_Levels.unity
+    guid: 27d038eaee02496489cad0b16fcaefc1
+  - enabled: 1
+    path: Assets/Scenes/Livello_1.unity
+    guid: bad28c74c753f5c4ea8f1866dc20dd7f
+  - enabled: 1
+    path: Assets/Scenes/Livello_1_void.unity
+    guid: ccf667eb270da924ca0cf813c6bc36c8
+  - enabled: 1
+    path: Assets/Scenes/Livello_2.unity
+    guid: 4652a4d2329737841bb512ba89c863bd
+  - enabled: 1
+    path: Assets/Scenes/Livello_2_void.unity
+    guid: 287948b496af88d409ccb5b23fe74b24
+  - enabled: 1
+    path: Assets/Scenes/Livello_3.unity
+    guid: 700631030eb0a93499e537d03ce7c73a
+  - enabled: 1
+    path: Assets/Scenes/Livello_3_void.unity
+    guid: b55dea5cebe9f30468c99334aa430b9b
   - enabled: 1
     path: Assets/Scenes/DD_Shop.unity
     guid: fb8b2b67b4b1fa64eb3fbf9a4d618170

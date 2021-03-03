@@ -6,6 +6,17 @@ TagManager:
   tags:
   - Ground
   - Underground
+  - Enemy
+  - Coin
+  - RockTrigger
+  - Rock
+  - Fall
+  - Acid
+  - AcidEnemy
+  - FloatingPlatform
+  - ThrownOff
+  - Bounce
+  - EndTrigger
   layers:
   - Default
   - TransparentFX
@@ -15,7 +26,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Platforms
   - 
   - 
   - 
@@ -42,4 +53,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: terreno
+    uniqueID: 2373030349
+    locked: 0
+  - name: player
+    uniqueID: 2182368933
     locked: 0
