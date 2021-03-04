@@ -29020,7 +29020,6 @@ GameObject:
   m_Component:
   - component: {fileID: 655328346}
   - component: {fileID: 655328345}
-  - component: {fileID: 655328344}
   - component: {fileID: 655328343}
   m_Layer: 0
   m_Name: End
@@ -29045,22 +29044,7 @@ MonoBehaviour:
   endPanel: {fileID: 958239378}
   delayToText: 0.5
   delayToPanel: 0.3
---- !u!114 &655328344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655328342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c342dc22a586d574c8a46f3b646bf94f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rock: {fileID: 1311284068577615518, guid: a2aaf8710e8d486478ae1d2167fb9492, type: 3}
-  pos: {x: 61.5, y: 25.23}
-  destroyTime: 6
-  readyTime: 15
+  currentCoins: {fileID: 958293195}
 --- !u!68 &655328345
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -41751,7 +41735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -19,6 +19,7 @@ public class UpdateMoney : MonoBehaviour
 
     public void Start()
     {
+        myTextCoins.text = PlayerPrefs.GetFloat("coins").ToString("0");
         initialCoins = System.Single.Parse(myTextCoins.text);
         desiredCoins = initialCoins;
         currentCoins = initialCoins;
