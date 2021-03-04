@@ -1,7 +1,9 @@
 fileFormatVersion: 2
-guid: 08d03e05cf5f4f8691fb34509f14359b
+guid: 369cd88e7aa04bd98e0f6c229f7c1510
 labels:
 - gvh
+- gvh_targets-editor
+- gvh_version-1.2.135.0
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -16,37 +18,18 @@ PluginImporter:
   - first:
       Any: 
     second:
-      enabled: 1
+      enabled: 0
       settings: {}
   - first:
       Editor: Editor
     second:
-      enabled: 0
+      enabled: 1
       settings:
-        CPU: x86_64
         DefaultValueInitialized: true
   - first:
-      Standalone: Linux64
-    second:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-  - first:
-      Standalone: OSXUniversal
+      Windows Store Apps: WindowsStoreApps
     second:
       enabled: 0
-      settings:
-        CPU: x86_64
-  - first:
-      Standalone: Win
-    second:
-      enabled: 0
-      settings:
-        CPU: None
-  - first:
-      Standalone: Win64
-    second:
-      enabled: 1
       settings:
         CPU: AnyCPU
   userData: 
