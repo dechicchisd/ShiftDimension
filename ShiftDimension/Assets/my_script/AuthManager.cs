@@ -3,9 +3,14 @@ using UnityEngine;
 using Firebase;
 using Firebase.Auth;
 using UnityEngine.UI;
-
+using TMPro;
 public class AuthManager : MonoBehaviour
 {
+    public TextMeshProUGUI helloField;
+    public TextMeshProUGUI coinField;
+    public GameObject loginPanel;
+    public GameObject background;
+
     //Firebase variables
     [Header("Firebase")]
     public DependencyStatus dependencyStatus;
@@ -108,6 +113,10 @@ public class AuthManager : MonoBehaviour
             Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
+            helloField.text = "Hello " + User.DisplayName;
+            coinField.text = PlayerPrefs.GetFloat("coins").ToString("0");
+            loginPanel.SetActive(false);
+            background.SetActive(false);
         }
     }
 
