@@ -6,10 +6,12 @@ using UnityEngine.UI;
 using TMPro;
 public class AuthManager : MonoBehaviour
 {
+    private string username;
     public TextMeshProUGUI helloField;
     public TextMeshProUGUI coinField;
     public GameObject loginPanel;
     public GameObject background;
+    public GameObject info;
 
     //Firebase variables
     [Header("Firebase")]
@@ -113,10 +115,14 @@ public class AuthManager : MonoBehaviour
             Debug.LogFormat("User signed in successfully: {0} ({1})", User.DisplayName, User.Email);
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
-            helloField.text = "Hello " + User.DisplayName;
+            username = User.DisplayName;
+            PlayerPrefs.SetString("username", username);
             coinField.text = PlayerPrefs.GetFloat("coins").ToString("0");
+            helloField.text = "Hello " + username;
             loginPanel.SetActive(false);
             background.SetActive(false);
+            info.SetActive(true);
+
         }
     }
 
@@ -198,5 +204,10 @@ public class AuthManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Logout()
+    {
+        PlayerPrefs.SetString("username", "");
     }
 }
