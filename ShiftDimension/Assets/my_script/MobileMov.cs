@@ -40,7 +40,7 @@ public class MobileMov : MonoBehaviour
     void Start()
     {
         textCoin.text = PlayerPrefs.GetFloat("coins").ToString("0");
-
+     
         if(isShifting == false)
         {
             transform.position = inizioLivello.position + new Vector2(0, 2f);
