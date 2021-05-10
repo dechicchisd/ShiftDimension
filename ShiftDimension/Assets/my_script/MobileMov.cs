@@ -55,7 +55,7 @@ public class MobileMov : MonoBehaviour
         isDead = false;
     }
 
-    /* ---------------------- USO DELLA TASTIERA --------------------------*/
+    /* ---------------------- USO DELLA TASTIERA --------------------------
     // Update is called once per frame
     void Update()
     {
@@ -93,10 +93,10 @@ public class MobileMov : MonoBehaviour
             distanzaCorrente = player.position.x;
         } 
 
-    } 
+    } /*
   
-/* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------
-// Update is called once per frame
+/* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------*/
+
 
     void Update()
     {
@@ -131,7 +131,7 @@ public class MobileMov : MonoBehaviour
             distanzaCorrente = player.position.x;
         }
 
-    } */
+    } 
    
 
     private void OnTriggerEnter2D(Collider2D coll) 
@@ -422,8 +422,10 @@ public class MobileMov : MonoBehaviour
         //crea una hitbox da cui posso controllare se il player sta toccando collider
         RaycastHit2D rayCastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
 
+
+
         Color rayColor;
-        if(rayCastHit.collider != null)
+        if (rayCastHit.collider != null)
         {
             rayColor = Color.green;
         }
@@ -431,23 +433,25 @@ public class MobileMov : MonoBehaviour
         {
             rayColor = Color.red;
         }
-       
+
         //disegna l'hitbox con del player e diventa rossa quando non collide con nulla altrimenti verde
         Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeight), rayColor);
         Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeight), Vector2.right * boxCollider.bounds.extents.x * 2, rayColor);
 
+
+
         bool ground = false;
         if (rayCastHit.collider != null)
             ground = rayCastHit.collider.tag == "Ground";
-        
+
         return ground;
     }
 
-    
 
-    
 
-    
+
+
+
 
 }
