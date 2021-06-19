@@ -17,6 +17,7 @@ public class MobileMov : MonoBehaviour
     public Rigidbody2D player;
     public Vector2 m_NewForce = new Vector2(0, 30f);
     public Animator animazione;
+    public Animator animazioneFine;
     public bool isRiight = true;
     public ForceMode2D salto;
     public static float altezzaCorrente;
@@ -34,6 +35,16 @@ public class MobileMov : MonoBehaviour
     private BoxCollider2D boxCollider;
     public GameObject deathPanel;
     public BoxCollider2D playerCollider;
+    public AudioSource audioJump;
+    public AudioClip jump;
+    public AudioSource audioCoin;
+    public AudioClip coin;
+    public AudioSource audioDeath;
+    public AudioClip death;
+    public AudioSource audioShift1;
+    public AudioClip shift1;
+    public AudioSource audioShift2;
+    public AudioClip shift2;
 
 
     // Start is called before the first frame update
@@ -50,7 +61,9 @@ public class MobileMov : MonoBehaviour
             StartCoroutine(IntervalloRicaricaScenaPost());
         }
         animazione = GetComponent<Animator>();
+        animazioneFine = GetComponent<Animator>();
         animazione.Play("rest");
+        animazioneFine.Play("fine");
         boxCollider = transform.GetComponent<BoxCollider2D>();
         isDead = false;
     }
@@ -91,48 +104,50 @@ public class MobileMov : MonoBehaviour
         {
             altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
             distanzaCorrente = player.position.x;
-        } 
+        }
 
-    } /*
-  
-/* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------*/
+        animazioneFine.Play("fine");
+
+    }*/
+
+    /* ------------------------------------------ USO DEL JOYSTIC E PULSANTI -------------------------------------*/
 
 
     void Update()
-    {
-        if (!IsGrounded() && player.position.y < altezzaCorrente && isDead == false && isShifting == false)
         {
-            animazione.Play("land");
-        }
-        else if(!IsGrounded() && player.position.y > altezzaCorrente && isDead == false && isShifting == false)
-        {
-            animazione.Play("jump");
-        }
+            if (!IsGrounded() && player.position.y < altezzaCorrente && isDead == false && isShifting == false)
+            {
+                animazione.Play("land");
+            }
+            else if(!IsGrounded() && player.position.y > altezzaCorrente && isDead == false && isShifting == false)
+            {
+                animazione.Play("jump");
+            }
 
-        if (joystick.Horizontal >= .2f && isDead == false && isShifting == false)
-        {
-            WalkRight();
-        }
-        else if (joystick.Horizontal <= -.2f && isDead == false && isShifting == false)
-        {
-            WalkLeft();
-        }
-        else if (IsGrounded() && isDead == false && isShifting == false) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
-        {
-            animazione.Play("rest");
-        }
-        else if (isDead == true)
-        {
-            animazione.Play("death");
-        }
-        if (isDead == false)
-        {
-            altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
-            distanzaCorrente = player.position.x;
-        }
+            if (joystick.Horizontal >= .2f && isDead == false && isShifting == false)
+            {
+                WalkRight();
+            }
+            else if (joystick.Horizontal <= -.2f && isDead == false && isShifting == false)
+            {
+                WalkLeft();
+            }
+            else if (IsGrounded() && isDead == false && isShifting == false) //SE NON VIENE PREMUTO NULLA E L'ANIMAZIONE CORRENTE NON è JUMP O LAND, FAI ANDARE L'ANIMAZIONE
+            {
+                animazione.Play("rest");
+            }
+            else if (isDead == true)
+            {
+                animazione.Play("death");
+            }
+            if (isDead == false)
+            {
+                altezzaCorrente = player.position.y; //AGGIORNA L'ALTEZZA CORRENTE DEL PLAYER
+                distanzaCorrente = player.position.x;
+            }
 
-    } 
-   
+        } 
+
 
     private void OnTriggerEnter2D(Collider2D coll) 
     {
@@ -142,6 +157,7 @@ public class MobileMov : MonoBehaviour
             float numCoin = System.Single.Parse(textCoin.text) + 1;
             Destroy(coll.gameObject);
             textCoin.text = numCoin.ToString("0");
+            audioCoin.PlayOneShot(coin, 1);
         }
 
         else if (coll.tag == "Acid")
@@ -226,8 +242,9 @@ public class MobileMov : MonoBehaviour
         {
             distanzaCorrente = 0;
             altezzaCorrente = 0;
+            StartCoroutine(IntervalloMorte(0.3f));/*
             deathPanel.SetActive(true);
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);*/
         }
 
         else if(collision.gameObject.tag == "Rock")
@@ -265,9 +282,11 @@ public class MobileMov : MonoBehaviour
        Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         //yield on a new YieldInstruction that waits for 5 seconds.
+
+        audioDeath.PlayOneShot(death, 1);
         yield return new WaitForSeconds(waitTime);
 
-       deathPanel.SetActive(true);
+        deathPanel.SetActive(true);
        Destroy(this.gameObject);
 
        //After we have waited 5 seconds print the time again.
@@ -283,6 +302,8 @@ public class MobileMov : MonoBehaviour
         if(IsGrounded())
         {
             player.AddForce(m_NewForce, ForceMode2D.Impulse);
+            audioJump.PlayOneShot(jump,1);
+
         }
         
 
@@ -329,6 +350,7 @@ public class MobileMov : MonoBehaviour
         if (player.velocity.y == 0)
         {
             isShifting = true;
+            audioShift1.PlayOneShot(shift1, 1);
             animazione.Play("shift");
             player.constraints = RigidbodyConstraints2D.FreezePosition;
             StartCoroutine(IntervalloRicaricaScena());
@@ -340,6 +362,8 @@ public class MobileMov : MonoBehaviour
         //Print the time of when the function is first called.
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
+
+        audioShift2.PlayOneShot(shift2, 1);
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(1.1f);
 

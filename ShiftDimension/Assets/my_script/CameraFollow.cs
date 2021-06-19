@@ -11,35 +11,43 @@ public class CameraFollow : MonoBehaviour
     public Rigidbody2D zero_limite_inferiore;
     public Rigidbody2D uno_camera;
     public float posizioneCamera;
+    public float posizioneTarget;
 
 
-     void start()
+    void start()
     {
         transform.position = new Vector3(target.position.x + offset.x, target.position.y, offset.z);
         posizioneCamera = target.position.y;
+        this.posizioneTarget = target.position.y;
     }
     // Update is called once per frame
     void LateUpdate()
     {
         if(target != null)
         {
-            if(target.position.y < zero_limite_superiore.position.y && target.position.y > zero_limite_inferiore.position.y)
+            if(target.position.y < zero_limite_superiore.position.y && target.position.y >= zero_limite_inferiore.position.y)
             {
-                if (transform.position.y != zero_camera.position.y)
+                if (transform.position.y != zero_camera.position.y && this.posizioneTarget > target.position.y)
                 {
                     posizioneCamera = transform.position.y - 0.5f;
+                }
+                else if (transform.position.y != zero_camera.position.y && this.posizioneTarget < target.position.y)
+                {
+                    posizioneCamera = transform.position.y + 0.5f;
                 }
                 transform.position = new Vector3(target.position.x + offset.x, posizioneCamera + offset.y, offset.z);
             }
             else if (target.position.y <= zero_limite_inferiore.position.y)
             {
                 
-                if (transform.position.y > uno_camera.position.y)
+                if (transform.position.y != uno_camera.position.y)
                 {
                     posizioneCamera = transform.position.y - 0.5f;
                 }
                 transform.position = new Vector3(target.position.x + offset.x, posizioneCamera, offset.z);
             }
+            
+            this.posizioneTarget = target.position.y;
         }
         
             
