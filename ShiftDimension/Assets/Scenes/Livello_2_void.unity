@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -72216,7 +72216,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 822790106}
           m_MethodName: JumpAction
           m_Mode: 1
           m_Arguments:
@@ -72270,7 +72270,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 822790106}
         m_MethodName: JumpAction
         m_Mode: 1
         m_Arguments:
@@ -91462,7 +91462,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 822790106}
           m_MethodName: ShiftDimension
           m_Mode: 1
           m_Arguments:
@@ -91516,7 +91516,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 822790106}
         m_MethodName: ShiftDimension
         m_Mode: 1
         m_Arguments:
